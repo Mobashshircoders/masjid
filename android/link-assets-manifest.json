@@ -1,0 +1,49 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/AbdoullahAshgar.ttf",
+      "sha1": "250b3eac2253f045c733836ae099d08ff2bfc641"
+    },
+    {
+      "path": "assets/fonts/GEDinar.ttf",
+      "sha1": "e19068f319846e416dae72d2ef5c6dc0f27c9b45"
+    },
+    {
+      "path": "assets/fonts/JetBrainsMono-Bold-Italic.ttf",
+      "sha1": "d719c87004a948eefab4d508ed34cd967be11640"
+    },
+    {
+      "path": "assets/fonts/JetBrainsMono-Bold.ttf",
+      "sha1": "3749e1402fb5d5ab05c082911a4222b30e7e7ce9"
+    },
+    {
+      "path": "assets/fonts/JetBrainsMono-ExtraBold-Italic.ttf",
+      "sha1": "88cef115e7e0d3f0e2adcf441e6ec561eb20c508"
+    },
+    {
+      "path": "assets/fonts/JetBrainsMono-ExtraBold.ttf",
+      "sha1": "db7eb2b265f06277adc76a7f167ec162b63b04f0"
+    },
+    {
+      "path": "assets/fonts/JetBrainsMono-Italic.ttf",
+      "sha1": "a613563d85b404435e276b67732e1f838081cc65"
+    },
+    {
+      "path": "assets/fonts/JetBrainsMono-Medium-Italic.ttf",
+      "sha1": "ca8a832413ebff921f5336826ffd0ab8c9294d4a"
+    },
+    {
+      "path": "assets/fonts/JetBrainsMono-Medium.ttf",
+      "sha1": "6c85ba197a824800c623170a03de2c7dcd4e231f"
+    },
+    {
+      "path": "assets/fonts/JetBrainsMono-Regular.ttf",
+      "sha1": "c48508dd46c3ca28ce0d2fd9e65bfb7199532f58"
+    },
+    {
+      "path": "assets/fonts/PrimetimeRegular.ttf",
+      "sha1": "2da577f78469267778dccefca609c023322d9274"
+    }
+  ]
+}
