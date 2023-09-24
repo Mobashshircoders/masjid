@@ -27,6 +27,7 @@ import * as Utils from '../util';
 import * as Savedata from '../Data';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Global from './Horizontal/Global';
 
 const AUTOCOMPLETE_THRESHOLD = 600;
 
@@ -170,6 +171,7 @@ const SearchPage = ({navigation}) => {
     const data = await resp.json();
     console.log('datatasd');
     //console.log(data);
+    <Global></Global>;
     saveMasjidid(data['Masjidid']);
     saveMasjidname(data['Masjidname']);
     saveDesign(data['Designname']);

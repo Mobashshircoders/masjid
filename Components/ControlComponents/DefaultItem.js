@@ -27,4 +27,16 @@ export const DEFAULT_ITEMS = [
     name: 'Design two',
     image: bgtwo,
   },
+  {
+    name: 'Design two',
+    image: bgtwo,
+  },
+  {
+    name: 'Design two',
+    image: bgtwo,
+  },
+  {
+    name: 'Design two',
+    image: bgtwo,
+  },
 ];

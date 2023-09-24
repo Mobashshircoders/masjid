@@ -70,6 +70,10 @@ import Verticaleighttwo from './Components/Vertical/Verticaleighttwo';
 import Verticalfivetwo from './Components/Vertical/Verticalfivetwo';
 import SearchPageVertical from './Components/SearchPageVertical';
 import Imageslider from './Components/Imageslider';
+import GalleryItem from './Components/GalleryItem';
+import ChooseOrientationMenu from './Components/chooseorientationmenu';
+import HorizontalMenu from './Components/horizontalmenu';
+import VerticalMenu from './Components/verticalmenu';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -93,7 +97,10 @@ const App = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="Home" component={SearchPage} />
+        <Stack.Screen name="Home" component={Gallery} />
+        {/* <Stack.Screen name="Home" component={SearchPage} /> */}
+        <Stack.Screen name="HorizontalMenu" component={HorizontalMenu} />
+        <Stack.Screen name="VerticalMenu" component={VerticalMenu} />
         <Stack.Screen name="Imageslider" component={Imageslider} />
         <Stack.Screen name="HDesign1" component={Designonechoose} />
         <Stack.Screen name="HDesign2" component={Designtwo} />

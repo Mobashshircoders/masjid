@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  BackHandler,
+} from 'react';
 import {StyleSheet, ScrollView} from 'react-native';
 import shuffle from 'lodash.shuffle';
 import GalleryItem from './GalleryItem';
 import {DEFAULT_ITEMS} from '../Components/ControlComponents/DefaultItem';
 
-const Gallery = ({rowNumber}) => {
+const VerticalMenu = ({rowNumber}) => {
   const items = shuffle(DEFAULT_ITEMS);
 
   return (
@@ -23,9 +29,14 @@ const Gallery = ({rowNumber}) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    height: '20%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   row: {
-    marginBottom: 1,
+    marginBottom: 50,
   },
 });
-
-export default Gallery;
+export default VerticalMenu;

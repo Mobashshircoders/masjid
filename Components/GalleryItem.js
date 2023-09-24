@@ -38,7 +38,6 @@ const GalleryItem = ({title, image, hasTVPreferredFocus, blockFocusRight}) => {
       }>
       <View>
         <Image style={styles.image} source={image} />
-        <Text style={styles.text}>{title}</Text>
       </View>
     </TouchableHighlight>
   );
@@ -56,16 +55,8 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 250,
-    height: 150,
+    height: 100,
     borderRadius: 10,
-  },
-  text: {
-    position: 'absolute',
-    bottom: 10,
-    left: 10,
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
   },
 });
 

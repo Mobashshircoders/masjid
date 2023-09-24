@@ -19,11 +19,13 @@ import Nextazaanctrl from '../ControlComponents/Nextazaanctrl';
 import Jumatime from '../ControlComponents/Jumatime';
 import Iqamatime from '../Iqamatime';
 import Imageslider from '../Imageslider';
-
+import DefaultPreference from 'react-native-default-preference';
+import Global from './Global';
 const Designthree = ({navigation}) => {
   useEffect(() => {
     setInterval(() => {
       var _data = new Iqamatime();
+      // const defaultstyle = DefaultPreference.get('DynamicFont');
       //console.log('tempcheck');
 
       _data.getiqamaafter().then(tim => {
@@ -85,6 +87,7 @@ const Designthree = ({navigation}) => {
                       <Arabicmonthyear />
                     </View>
                     <View style={styles.leftinnertwo}>
+                      {/* <Global></Global> */}
                       <Nextazaanctrl />
                     </View>
                     <View style={styles.leftinnerthree}>
@@ -112,6 +115,7 @@ const styles = StyleSheet.create({
     color: 'white',
 
     textAlign: 'center',
+    //fontFamily: defaultstyle,
     fontFamily: 'GEDinar',
   },
   container: {
