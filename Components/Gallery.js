@@ -24,7 +24,7 @@ const Gallery = ({rowNumber}) => {
 
 const styles = StyleSheet.create({
   row: {
-    marginBottom: 1,
+    marginBottom: 50,
   },
 });
 

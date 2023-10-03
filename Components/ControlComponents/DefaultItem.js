@@ -8,35 +8,51 @@ import bgthree from './images/bgthree.jpg';
 
 export const DEFAULT_ITEMS = [
   {
-    name: 'Design one',
-    image: bgone,
+    id: 1,
+    title: 'Design one',
+    cardImageUrl:
+      'https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU',
   },
   {
-    name: 'Design two',
-    image: bgtwo,
+    id: 2,
+    title: 'Design two',
+    cardImageUrl:
+      'https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU',
   },
   {
-    name: 'Design three',
-    image: bgthree,
+    id: 3,
+    title: 'Design three',
+    cardImageUrl:
+      'https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU',
   },
   {
-    name: 'Design one',
-    image: bgone,
+    id: 4,
+    title: 'Design one',
+    cardImageUrl:
+      'https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU',
   },
   {
-    name: 'Design two',
-    image: bgtwo,
+    id: 5,
+    title: 'Design two',
+    cardImageUrl:
+      'https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU',
   },
   {
-    name: 'Design two',
-    image: bgtwo,
+    id: 6,
+    title: 'Design two',
+    cardImageUrl:
+      'https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU',
   },
   {
-    name: 'Design two',
-    image: bgtwo,
+    id: 7,
+    title: 'Design two',
+    cardImageUrl:
+      'https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU',
   },
   {
-    name: 'Design two',
-    image: bgtwo,
+    id: 8,
+    title: 'Design two',
+    cardImageUrl:
+      'https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU',
   },
 ];
