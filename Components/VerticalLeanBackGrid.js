@@ -8,14 +8,14 @@ import {
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import Gallery from './Gallery';
-import GalleryTwo from './Gallerytwo';
-import GalleryThree from './Gallerythree';
-import GalleryFour from './Galleryfour';
-import GalleryFive from './Galleryfive';
+import GalleryVertical from './Galleryvertical';
+import GalleryVerticalTwo from './Galleryverticaltwo';
+import GalleryVerticalThree from './Galleryverticalthree';
+import GalleryVerticalFour from './Galleryverticalfour';
+import GalleryVerticalFive from './Galleryverticalfive';
 import Menu from './Menu';
 
-const HorizontalLeanBackGrid = () => {
+const VerticalLeanBackGrid = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -26,11 +26,10 @@ const HorizontalLeanBackGrid = () => {
           <View style={styles.body}>
             {/* <Menu /> */}
             <View style={styles.sectionContainer}>
-              <Gallery rowNumber={0} />
-              <GalleryTwo />
-              <GalleryThree />
-              <GalleryFour />
-              <GalleryFive />
+              <GalleryVertical rowNumber={0} />
+              <GalleryVerticalTwo />
+              <GalleryVerticalThree />
+              <GalleryVerticalFour />
             </View>
           </View>
         </ScrollView>
@@ -79,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HorizontalLeanBackGrid;
+export default VerticalLeanBackGrid;

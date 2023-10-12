@@ -9,23 +9,13 @@ import {
 } from 'react-native';
 import DefaultPreference from 'react-native-default-preference';
 
-const GalleryItem = ({
+const GalleryItemVertical = ({
   title,
   image,
   hasTVPreferredFocus,
   blockFocusRight,
-  navigation,
 }) => {
   const [focus, setFocus] = useState(false);
-
-  const saveDesign = data => {
-    try {
-      DefaultPreference.set('design', data).then(function () {
-        navigation.navigate('ChooseLanguage');
-      });
-      //await AsyncStorage.setItem('design', data);
-    } catch (e) {}
-  };
 
   const onFocus = useCallback(() => {
     setFocus(true);
@@ -41,6 +31,15 @@ const GalleryItem = ({
       touchableHighlightRef.current = ref;
     }
   }, []);
+
+  const saveDesign = data => {
+    try {
+      DefaultPreference.set('design', data).then(function () {
+        navigation.navigate('ChooseLanguage');
+      });
+      //await AsyncStorage.setItem('design', data);
+    } catch (e) {}
+  };
 
   function handleItemTouch() {
     saveDesign(title);
@@ -75,10 +74,10 @@ const styles = StyleSheet.create({
     borderColor: '#714add',
   },
   image: {
-    width: 250,
-    height: 140,
+    width: 140,
+    height: 250,
     borderRadius: 4,
   },
 });
 
-export default GalleryItem;
+export default GalleryItemVertical;

@@ -20,38 +20,32 @@ import {
 } from 'react-native';
 import DefaultPreference from 'react-native-default-preference';
 
-const ChooseOrientationMenu = ({navigation}) => {
-  function onHorizontalClick() {
-    saveOrientation('Horizontal');
-    navigation.navigate('HorizontalMenu');
-
-    try {
-      DefaultPreference.set('orientation', 'Horizontal').then(function () {
-        navigation.navigate('HorizontalMenu');
-      });
-      //await AsyncStorage.setItem('orientation', data);
-    } catch (e) {}
+const ChooseLanguage = ({navigation}) => {
+  function onEnglishClick() {
+    saveLanguage('English');
   }
 
-  function onVerticalClick() {
-    try {
-      DefaultPreference.set('orientation', 'Vertical').then(function () {
-        navigation.navigate('VerticalMenu');
-      });
-      //await AsyncStorage.setItem('orientation', data);
-    } catch (e) {}
+  function onArabicClick() {
+    saveLanguage('Arabic');
   }
 
-  const saveOrientation = data => {};
+  const saveLanguage = data => {
+    try {
+      DefaultPreference.set('language', data).then(function () {
+        navigation.navigate('ChooseTimezone');
+      });
+      //await AsyncStorage.setItem('language', data);
+    } catch (e) {}
+  };
 
   return (
     <View style={styles.container}>
-      <TouchableHighlight onPress={onHorizontalClick}>
-        <Text style={styles.buttonsstyle}>Horizontal</Text>
+      <TouchableHighlight onPress={onEnglishClick}>
+        <Text style={styles.buttonsstyle}>English</Text>
       </TouchableHighlight>
       <View style={styles.verticleLine}></View>
-      <TouchableHighlight onPress={onVerticalClick}>
-        <Text style={styles.buttonsstyle}>Vertical</Text>
+      <TouchableHighlight onPress={onArabicClick}>
+        <Text style={styles.buttonsstyle}>Arabic</Text>
       </TouchableHighlight>
     </View>
   );
@@ -77,4 +71,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#909090',
   },
 });
-export default ChooseOrientationMenu;
+export default ChooseLanguage;
