@@ -78,6 +78,7 @@ import HorizontalLeanBackGrid from './Components/HorizontalLeanBackGrid';
 import VerticalLeanBackGrid from './Components/VerticalLeanBackGrid';
 import ChooseLanguage from './Components/chooselanguage';
 import GetSearchPage from './Components/GetSearchPage';
+import TestPage from './Components/testpage';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -101,7 +102,7 @@ const App = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="Home" component={GetSearchPage} />
+        <Stack.Screen name="Home" component={TestPage} />
         {/* <Stack.Screen name="Home" component={SearchPage} /> */}
         <Stack.Screen
           name="HorizontalMenu"

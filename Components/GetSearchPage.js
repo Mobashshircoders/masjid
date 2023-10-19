@@ -68,10 +68,36 @@ const GetSearchPage = ({navigation}) => {
     } catch (e) {}
   };
 
+  const saveCountry = data => {
+    try {
+      DefaultPreference.set('country', data).then(function () {});
+      //await AsyncStorage.setItem('city', data);
+    } catch (e) {}
+  };
+
+  const fetchData = async () => {
+    let method = 4;
+    let monthIndex = new Date().getMonth();
+    let year = new Date().getFullYear();
+    const respdata = await fetch(
+      `http://api.aladhan.com/v1/hijriCalendarByCity?city=${encodeURIComponent(
+        city,
+      )}&country=${encodeURIComponent(country)}&method=${encodeURIComponent(
+        method,
+      )}&month=${encodeURIComponent(monthIndex)}&year=${encodeURIComponent(
+        year,
+      )}`,
+      {
+        method: 'GET',
+      },
+    );
+    const returndata = await respdata.json();
+  };
+
   const fetchMosque = async () => {
     const resp = await fetch(Utils.URL + 'Masjid/Getmosquename');
     const data = await resp.json();
-    setMosquenames(data['Masjidname']);
+    setMosquenames(data);
     // setCity(data['City']);
     // setCountry(data['Country']);
     // saveMasjidname(data['Masjidname']);
@@ -155,9 +181,18 @@ const GetSearchPage = ({navigation}) => {
   async function onPresstim(txt) {
     //console.log(txt);
     //setInputmosque(txt);
-    await fetchMosqueData(txt);
+    //await fetchMosqueData(txt);
     // await getOrientData();
     // await getDesignData();
+
+    const arr = txt.split('-');
+    saveMasjidname(arr[0]);
+    setInputmosque(arr[0]);
+    saveCity(arr[1]);
+    setCity(arr[1]);
+    saveCountry(arr[2]);
+    setCountry(arr[2]);
+    sleep(2000);
   }
 
   async function onPressExit() {
