@@ -75,9 +75,84 @@ const GetSearchPage = ({navigation}) => {
     } catch (e) {}
   };
 
+  const saveFajrazaan = data => {
+    try {
+      DefaultPreference.set('Fajrazaan', data).then(function () {});
+      //await AsyncStorage.setItem('Fajrazaan', data);
+    } catch (e) {}
+  };
+  const saveFajrnamaaz = data => {
+    try {
+      DefaultPreference.set('Fajrnamaaz', data).then(function () {});
+      //await AsyncStorage.setItem('Fajrnamaaz', data);
+    } catch (e) {}
+  };
+  const saveMaghribazaan = data => {
+    try {
+      DefaultPreference.set('Maghribazaan', data).then(function () {});
+      //await AsyncStorage.setItem('Maghribazaan', data);
+    } catch (e) {}
+  };
+  const saveMaghribnamaaz = data => {
+    try {
+      DefaultPreference.set('Maghribnamaaz', data).then(function () {});
+      //await AsyncStorage.setItem('Maghribnamaaz', data);
+    } catch (e) {}
+  };
+  const saveDhuhrazaan = data => {
+    try {
+      DefaultPreference.set('Dhuhrazaan', data).then(function () {});
+      //await AsyncStorage.setItem('Dhuhrazaan', data);
+    } catch (e) {}
+  };
+  const saveDhuhrnamaaz = data => {
+    try {
+      DefaultPreference.set('Dhuhrnamaaz', data).then(function () {});
+      //await AsyncStorage.setItem('Dhuhrnamaaz', data);
+    } catch (e) {}
+  };
+  const saveAsrazaan = data => {
+    try {
+      DefaultPreference.set('Asrazaan', data).then(function () {});
+      //await AsyncStorage.setItem('Asrazaan', data);
+    } catch (e) {}
+  };
+  const saveAsrnamaaz = data => {
+    try {
+      DefaultPreference.set('Asrnamaaz', data).then(function () {});
+      //await AsyncStorage.setItem('Asrnamaaz', data);
+    } catch (e) {}
+  };
+  const saveIshaazaan = data => {
+    try {
+      DefaultPreference.set('Ishaazaan', data).then(function () {});
+      //await AsyncStorage.setItem('Ishaazaan', data);
+    } catch (e) {}
+  };
+  const saveIshanamaaz = data => {
+    try {
+      DefaultPreference.set('Ishanamaaz', data).then(function () {});
+      //await AsyncStorage.setItem('Ishanamaaz', data);
+    } catch (e) {}
+  };
+  const saveJumuanamaaz = data => {
+    try {
+      DefaultPreference.set('Jumuanamaaz', data).then(function () {});
+      //await AsyncStorage.setItem('Jumuanamaaz', data);
+    } catch (e) {}
+  };
+  const saveShuruq = data => {
+    try {
+      DefaultPreference.set('Shuruq', data).then(function () {});
+      //await AsyncStorage.setItem('Shuruq', data);
+    } catch (e) {}
+  };
+
   const fetchData = async () => {
     let method = 4;
-    let monthIndex = new Date().getMonth();
+    let monthIndexorg = new Date().getMonth();
+    let monthIndex = monthIndexorg + 1;
+    let date = new Date().getDate();
     let year = new Date().getFullYear();
     const respdata = await fetch(
       `http://api.aladhan.com/v1/hijriCalendarByCity?city=${encodeURIComponent(
@@ -92,6 +167,90 @@ const GetSearchPage = ({navigation}) => {
       },
     );
     const returndata = await respdata.json();
+    console.log(monthIndex);
+    console.log(year);
+    console.log(date);
+    console.log(returndata.data[0].date.hijri.date);
+    var strdate =
+      ('0' + date).slice(-2).toString() +
+      '-' +
+      ('0' + monthIndex).slice(-2).toString() +
+      '-' +
+      year.toString();
+    console.log(strdate);
+    var createddate = new Date(strdate);
+    console.log(createddate);
+
+    console.log(returndata.data.length);
+
+    for (let i = 0; i < returndata.data.length; i++) {
+      if (strdate == returndata.data[i].date.hijri.date.toString()) {
+        let obj = returndata.data[i];
+
+        console.log(obj.timings);
+        console.log('--------------');
+        console.log(strdate);
+
+        let fajrnamaaztime = getData(
+          obj.timings.Fajr,
+          30,
+          year,
+          monthIndex,
+          date,
+        );
+        let dhuhrnamaaztime = getData(
+          obj.timings.Dhuhr,
+          30,
+          year,
+          monthIndex,
+          date,
+        );
+        let jumanamaaztime = getData(
+          obj.timings.Dhuhr,
+          45,
+          year,
+          monthIndex,
+          date,
+        );
+        let asrnamaaztime = getData(
+          obj.timings.Asr,
+          15,
+          year,
+          monthIndex,
+          date,
+        );
+        let maghribnamaaztime = getData(
+          obj.timings.Maghrib,
+          05,
+          year,
+          monthIndex,
+          date,
+        );
+        let ishanamaaztime = getData(
+          obj.timings.Isha,
+          30,
+          year,
+          monthIndex,
+          date,
+        );
+
+        saveFajrazaan(obj.timings.Fajr.slice(0, 5));
+        saveFajrnamaaz(fajrnamaaztime);
+        saveDhuhrazaan(obj.timings.Dhuhr.slice(0, 5));
+        saveDhuhrnamaaz(dhuhrnamaaztime);
+        saveAsrazaan(obj.timings.Asr.slice(0, 5));
+        saveAsrnamaaz(asrnamaaztime);
+        saveMaghribazaan(obj.timings.Maghrib.slice(0, 5));
+        saveMaghribnamaaz(maghribnamaaztime);
+        saveIshaazaan(obj.timings.Isha.slice(0, 5));
+        saveIshanamaaz(ishanamaaztime);
+        saveJumuanamaaz(jumanamaaztime);
+        saveShuruq(obj.timings.Sunrise.slice(0, 5));
+        await sleep(20000);
+
+        break;
+      }
+    }
   };
 
   const fetchMosque = async () => {
@@ -193,6 +352,46 @@ const GetSearchPage = ({navigation}) => {
     saveCountry(arr[2]);
     setCountry(arr[2]);
     sleep(2000);
+  }
+
+  function addMinutes(date, minutes) {
+    date.setMinutes(date.getMinutes() + minutes);
+
+    return date;
+  }
+
+  function getData(namaztime, interval, year, month, date) {
+    let namaztimestart = namaztime.slice(0, 5);
+    let calvalue = namaztimestart;
+    let lastvalue = parseInt(namaztimestart.charAt(namaztimestart.length - 1));
+    let between5to9 = true;
+    if (lastvalue > 5 && lastvalue <= 9) {
+      lastvalue = 0;
+      calvalue = namaztimestart.slice(0, -1) + lastvalue.toString();
+      between5to9 = true;
+    } else if (lastvalue > 0 && lastvalue <= 4) {
+      lastvalue = 5;
+      calvalue = namaztimestart.slice(0, -1) + lastvalue.toString();
+      between5to9 = false;
+    } else {
+      calvalue = namaztimestart;
+      between5to9 = false;
+    }
+    var tempsplit = calvalue.split(':');
+    var fajrdate = new Date(
+      year,
+      month,
+      date,
+      parseInt(tempsplit[0]),
+      parseInt(tempsplit[1]),
+    );
+    var newdateadded = new Date();
+    if (between5to9) {
+      newdateadded = addMinutes(fajrdate, interval + 10);
+    } else {
+      newdateadded = addMinutes(fajrdate, interval);
+    }
+    return newdateadded.toTimeString().slice(0, 5);
   }
 
   async function onPressExit() {

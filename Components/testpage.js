@@ -60,22 +60,40 @@ const TestPage = () => {
         console.log('--------------');
         console.log(strdate);
 
-        let fajrtimestart = obj.timings.Fajr.slice(0, 5);
-        let calvalue = fajrtimestart;
-        let lastvalue = parseInt(
-          fajrtimestart.charAt(fajrtimestart.length - 1),
-        );
-        if ((lastvalue > 5) & (lastvalue <= 9)) {
-          lastvalue = 0;
-          calvalue = fajrtimestart.slice(0, -1) + lastvalue.toString();
-        }
-        var tempsplit = calvalue.split(':');
-        var fajrdate = new Date(
+        let fajrnamaaztime = getData(
+          obj.timings.Fajr,
+          30,
           year,
-          monthIndexorg,
+          monthIndex,
           date,
-          parseInt(tempsplit[0]),
-          parseInt(tempsplit[1] + 30),
+        );
+        let dhuhrnamaaztime = getData(
+          obj.timings.Dhuhr,
+          30,
+          year,
+          monthIndex,
+          date,
+        );
+        let asrnamaaztime = getData(
+          obj.timings.Asr,
+          15,
+          year,
+          monthIndex,
+          date,
+        );
+        let maghribnamaaztime = getData(
+          obj.timings.Maghrib,
+          05,
+          year,
+          monthIndex,
+          date,
+        );
+        let ishanamaaztime = getData(
+          obj.timings.Isha,
+          30,
+          year,
+          monthIndex,
+          date,
         );
 
         break;
@@ -83,16 +101,28 @@ const TestPage = () => {
     }
   };
 
+  function addMinutes(date, minutes) {
+    date.setMinutes(date.getMinutes() + minutes);
+
+    return date;
+  }
+
   function getData(namaztime, interval, year, month, date) {
     let namaztimestart = namaztime.slice(0, 5);
     let calvalue = namaztimestart;
     let lastvalue = parseInt(namaztimestart.charAt(namaztimestart.length - 1));
+    let between5to9 = true;
     if (lastvalue > 5 && lastvalue <= 9) {
       lastvalue = 0;
       calvalue = namaztimestart.slice(0, -1) + lastvalue.toString();
+      between5to9 = true;
     } else if (lastvalue > 0 && lastvalue <= 4) {
       lastvalue = 5;
       calvalue = namaztimestart.slice(0, -1) + lastvalue.toString();
+      between5to9 = false;
+    } else {
+      calvalue = namaztimestart;
+      between5to9 = false;
     }
     var tempsplit = calvalue.split(':');
     var fajrdate = new Date(
@@ -100,8 +130,15 @@ const TestPage = () => {
       month,
       date,
       parseInt(tempsplit[0]),
-      parseInt(tempsplit[1] + interval),
+      parseInt(tempsplit[1]),
     );
+    var newdateadded = new Date();
+    if (between5to9) {
+      newdateadded = addMinutes(fajrdate, interval + 10);
+    } else {
+      newdateadded = addMinutes(fajrdate, interval);
+    }
+    return newdateadded.toTimeString().slice(0, 5);
   }
 
   function getResult(filterBy, objList) {
