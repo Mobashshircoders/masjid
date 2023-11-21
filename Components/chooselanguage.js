@@ -12,12 +12,15 @@ import {
   Text,
   TextInput,
   StyleSheet,
+  StatusBar,
   Platform,
   TouchableHighlight,
+  SafeAreaView,
   ImageBackground,
   TouchableHighlightBase,
   Button,
 } from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import DefaultPreference from 'react-native-default-preference';
 
 const ChooseLanguage = ({navigation}) => {
@@ -43,29 +46,73 @@ const ChooseLanguage = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableHighlight onPress={onEnglishClick}>
-        <Text style={styles.buttonsstyle}>English</Text>
-      </TouchableHighlight>
-      <View style={styles.verticleLine}></View>
-      <TouchableHighlight onPress={onArabicClick}>
-        <Text style={styles.buttonsstyle}>Arabic</Text>
-      </TouchableHighlight>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.body}>
+          {/* <Menu /> */}
+          <View style={styles.topBox}>
+            <Text style={styles.label}>Choose Language</Text>
+          </View>
+
+          <View style={styles.spaceview}></View>
+          <View style={styles.topBox1}>
+            <TouchableHighlight onPress={onEnglishClick}>
+              <Text style={styles.buttonsstyle}>English</Text>
+            </TouchableHighlight>
+            <View style={styles.spaceview1}></View>
+
+            <TouchableHighlight onPress={onArabicClick}>
+              <Text style={styles.buttonsstyle}>Arabic</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  engine: {
+    position: 'absolute',
+    right: 0,
+  },
+  body: {
+    flex: 1,
+    backgroundColor: Colors.black,
+  },
   container: {
-    paddingTop: 70,
-    width: '100%',
+    flex: 1,
+    backgroundColor: Colors.black,
+  },
+  label: {
+    fontSize: 40,
+    color: '#31C283',
+    fontWeight: 'bold',
+    alignContent: 'center',
+  },
+  topBox: {
+    flex: 1,
     flexDirection: 'row',
+    backgroundColor: 'lightgray',
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'space-evenly',
-    marginBottom: 20,
+  },
+  topBox1: {
+    flex: 1,
+
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  spaceview: {
+    height: 70,
+    width: '100%',
+  },
+  spaceview1: {
+    height: 20,
+    width: '100%',
   },
   buttonsstyle: {
-    fontSize: 40,
+    fontSize: 30,
     color: '#31C283',
     fontWeight: 'bold',
   },

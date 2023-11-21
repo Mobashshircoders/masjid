@@ -426,7 +426,7 @@ const GetSearchPage = ({navigation}) => {
 
   return (
     <View style={styles.right1}>
-      <ImageBackground style={styles.imgback} source={require('./bgnine.png')}>
+      <ImageBackground style={styles.imgback} source={require('./pxfuel.jpg')}>
         <View style={Style.styles.header}>
           <Text style={Style.styles.headerText}>{'Search Mosque'}</Text>
         </View>
@@ -585,7 +585,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccc',
   },
   searchResultText: {
-    fontSize: Style.px(65),
+    fontSize: Style.px(35),
     color: 'white',
   },
   noResults: {
