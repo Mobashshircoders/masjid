@@ -14,6 +14,7 @@ const GalleryItemVertical = ({
   image,
   hasTVPreferredFocus,
   blockFocusRight,
+  navigation,
 }) => {
   const [focus, setFocus] = useState(false);
 
@@ -35,7 +36,7 @@ const GalleryItemVertical = ({
   const saveDesign = data => {
     try {
       DefaultPreference.set('design', data).then(function () {
-        navigation.navigate('ChooseLanguage');
+        navigation.navigate('V' + data);
       });
       //await AsyncStorage.setItem('design', data);
     } catch (e) {}

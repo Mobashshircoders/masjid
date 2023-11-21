@@ -15,7 +15,7 @@ import GalleryFour from './Galleryfour';
 import GalleryFive from './Galleryfive';
 import Menu from './Menu';
 
-const HorizontalLeanBackGrid = () => {
+const HorizontalLeanBackGrid = ({navigation}) => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -26,11 +26,11 @@ const HorizontalLeanBackGrid = () => {
           <View style={styles.body}>
             {/* <Menu /> */}
             <View style={styles.sectionContainer}>
-              <Gallery rowNumber={0} />
-              <GalleryTwo />
-              <GalleryThree />
-              <GalleryFour />
-              <GalleryFive />
+              <Gallery navigation={navigation} rowNumber={0} />
+              <GalleryTwo navigation={navigation} />
+              <GalleryThree navigation={navigation} />
+              <GalleryFour navigation={navigation} />
+              <GalleryFive navigation={navigation} />
             </View>
           </View>
         </ScrollView>

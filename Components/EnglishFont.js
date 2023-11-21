@@ -20,23 +20,19 @@ import {
 } from 'react-native';
 import DefaultPreference from 'react-native-default-preference';
 
-const ChooseLanguage = ({navigation}) => {
-  function onEnglishClick() {
-    saveLanguage('English');
+const EnglishFont = ({navigation}) => {
+  function onFtyStrategyClick() {
+    saveFont('FtyStrategycideNcv-elGI');
   }
 
-  function onArabicClick() {
-    saveLanguage('Arabic');
+  function onJetBrainsclick() {
+    saveFont('JetBrainsMono-Bold');
   }
 
-  const saveLanguage = data => {
+  const saveFont = data => {
     try {
-      DefaultPreference.set('language', data).then(function () {
-        if (data == 'English') {
-          navigation.navigate('EnglishFont');
-        } else if (data == 'Arabic') {
-          navigation.navigate('ArabicFont');
-        }
+      DefaultPreference.set('font', data).then(function () {
+        navigation.navigate('ChooseOrientation');
       });
       //await AsyncStorage.setItem('language', data);
     } catch (e) {}
@@ -44,12 +40,12 @@ const ChooseLanguage = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <TouchableHighlight onPress={onEnglishClick}>
-        <Text style={styles.buttonsstyle}>English</Text>
+      <TouchableHighlight onPress={onJetBrainsclick}>
+        <Text style={styles.buttonsstyle}>JetBrainsMono-Bold</Text>
       </TouchableHighlight>
       <View style={styles.verticleLine}></View>
-      <TouchableHighlight onPress={onArabicClick}>
-        <Text style={styles.buttonsstyle}>Arabic</Text>
+      <TouchableHighlight onPress={onFtyStrategyClick}>
+        <Text style={styles.buttonsstyle}>FtyStrategycideNcv-elGI</Text>
       </TouchableHighlight>
     </View>
   );
@@ -75,4 +71,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#909090',
   },
 });
-export default ChooseLanguage;
+export default EnglishFont;

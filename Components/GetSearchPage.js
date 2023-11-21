@@ -167,9 +167,8 @@ const GetSearchPage = ({navigation}) => {
       },
     );
     const returndata = await respdata.json();
-    console.log(monthIndex);
-    console.log(year);
-    console.log(date);
+
+    console.log(returndata);
     console.log(returndata.data[0].date.hijri.date);
     var strdate =
       ('0' + date).slice(-2).toString() +
@@ -193,42 +192,42 @@ const GetSearchPage = ({navigation}) => {
 
         let fajrnamaaztime = getData(
           obj.timings.Fajr,
-          30,
+          parseInt('30'),
           year,
           monthIndex,
           date,
         );
         let dhuhrnamaaztime = getData(
           obj.timings.Dhuhr,
-          30,
+          parseInt('30'),
           year,
           monthIndex,
           date,
         );
         let jumanamaaztime = getData(
           obj.timings.Dhuhr,
-          45,
+          parseInt('45'),
           year,
           monthIndex,
           date,
         );
         let asrnamaaztime = getData(
           obj.timings.Asr,
-          15,
+          parseInt('15'),
           year,
           monthIndex,
           date,
         );
         let maghribnamaaztime = getData(
           obj.timings.Maghrib,
-          05,
+          parseInt('05'),
           year,
           monthIndex,
           date,
         );
         let ishanamaaztime = getData(
           obj.timings.Isha,
-          30,
+          parseInt('30'),
           year,
           monthIndex,
           date,
@@ -246,22 +245,23 @@ const GetSearchPage = ({navigation}) => {
         saveIshanamaaz(ishanamaaztime);
         saveJumuanamaaz(jumanamaaztime);
         saveShuruq(obj.timings.Sunrise.slice(0, 5));
-        await sleep(20000);
+        await sleep(10000);
 
         break;
       }
     }
+    navigation.navigate('ChooseLanguage');
   };
 
   const fetchMosque = async () => {
     const resp = await fetch(Utils.URL + 'Masjid/Getmosquename');
     const data = await resp.json();
     setMosquenames(data);
-    // setCity(data['City']);
-    // setCountry(data['Country']);
-    // saveMasjidname(data['Masjidname']);
-    // saveCity(data['City']);
-    // saveMasjidid(data['Masjidid']);
+    setCity(data['City']);
+    setCountry(data['Country']);
+    saveMasjidname(data['Masjidname']);
+    saveCity(data['City']);
+    saveMasjidid(data['Masjidid']);
     //setLoading(false);
   };
   let autocompleteTimer = null;
@@ -352,6 +352,8 @@ const GetSearchPage = ({navigation}) => {
     saveCountry(arr[2]);
     setCountry(arr[2]);
     sleep(2000);
+
+    fetchData();
   }
 
   function addMinutes(date, minutes) {

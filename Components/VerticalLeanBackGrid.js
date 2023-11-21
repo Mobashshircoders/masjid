@@ -26,10 +26,10 @@ const VerticalLeanBackGrid = () => {
           <View style={styles.body}>
             {/* <Menu /> */}
             <View style={styles.sectionContainer}>
-              <GalleryVertical rowNumber={0} />
-              <GalleryVerticalTwo />
-              <GalleryVerticalThree />
-              <GalleryVerticalFour />
+              <GalleryVertical navigation={navigation} rowNumber={0} />
+              <GalleryVerticalTwo navigation={navigation} />
+              <GalleryVerticalThree navigation={navigation} />
+              <GalleryVerticalFour navigation={navigation} />
             </View>
           </View>
         </ScrollView>

@@ -20,9 +20,9 @@ const GalleryItem = ({
 
   const saveDesign = data => {
     try {
-      DefaultPreference.set('design', data).then(function () {
-        navigation.navigate('ChooseLanguage');
-      });
+      DefaultPreference.set('design', data).then(function () {});
+
+      navigation.navigate('H' + data);
       //await AsyncStorage.setItem('design', data);
     } catch (e) {}
   };
@@ -34,6 +34,9 @@ const GalleryItem = ({
   const onBlur = useCallback(() => {
     setFocus(false);
   }, []);
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
   const touchableHighlightRef = useRef(null);
   const onRef = useCallback(ref => {

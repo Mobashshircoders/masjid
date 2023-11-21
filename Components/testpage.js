@@ -39,66 +39,6 @@ const TestPage = () => {
     console.log(monthIndex);
     console.log(year);
     console.log(date);
-    console.log(returndata.data[0].date.hijri.date);
-    var strdate =
-      ('0' + date).slice(-2).toString() +
-      '-' +
-      ('0' + monthIndex).slice(-2).toString() +
-      '-' +
-      year.toString();
-    console.log(strdate);
-    var createddate = new Date(strdate);
-    console.log(createddate);
-
-    console.log(returndata.data.length);
-
-    for (let i = 0; i < returndata.data.length; i++) {
-      if (strdate == returndata.data[i].date.hijri.date.toString()) {
-        let obj = returndata.data[i];
-
-        console.log(obj.timings);
-        console.log('--------------');
-        console.log(strdate);
-
-        let fajrnamaaztime = getData(
-          obj.timings.Fajr,
-          30,
-          year,
-          monthIndex,
-          date,
-        );
-        let dhuhrnamaaztime = getData(
-          obj.timings.Dhuhr,
-          30,
-          year,
-          monthIndex,
-          date,
-        );
-        let asrnamaaztime = getData(
-          obj.timings.Asr,
-          15,
-          year,
-          monthIndex,
-          date,
-        );
-        let maghribnamaaztime = getData(
-          obj.timings.Maghrib,
-          05,
-          year,
-          monthIndex,
-          date,
-        );
-        let ishanamaaztime = getData(
-          obj.timings.Isha,
-          30,
-          year,
-          monthIndex,
-          date,
-        );
-
-        break;
-      }
-    }
   };
 
   function addMinutes(date, minutes) {

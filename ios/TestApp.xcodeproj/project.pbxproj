@@ -31,6 +31,7 @@
 		BEF10D85D9394417A7192747 /* JetBrainsMono-Medium-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3938A5EED34CBA9105D164 /* JetBrainsMono-Medium-Italic.ttf */; };
 		40DD904A6194435999EFCAA2 /* JetBrainsMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B750E236026B4CE9B65B3EEA /* JetBrainsMono-Medium.ttf */; };
 		E7A09F338C5443AE82364FE8 /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E587CDA63354DF29086DE8A /* JetBrainsMono-Regular.ttf */; };
+		63D719E86F174D71B496B9D2 /* FtyStrategycideNcv-elGl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1021C30D0919446A92E38A66 /* FtyStrategycideNcv-elGl.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		FA3938A5EED34CBA9105D164 /* JetBrainsMono-Medium-Italic.ttf */ = {isa = PBXFileReference; name = "JetBrainsMono-Medium-Italic.ttf"; path = "../assets/fonts/JetBrainsMono-Medium-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		B750E236026B4CE9B65B3EEA /* JetBrainsMono-Medium.ttf */ = {isa = PBXFileReference; name = "JetBrainsMono-Medium.ttf"; path = "../assets/fonts/JetBrainsMono-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		0E587CDA63354DF29086DE8A /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; name = "JetBrainsMono-Regular.ttf"; path = "../assets/fonts/JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1021C30D0919446A92E38A66 /* FtyStrategycideNcv-elGl.ttf */ = {isa = PBXFileReference; name = "FtyStrategycideNcv-elGl.ttf"; path = "../assets/fonts/FtyStrategycideNcv-elGl.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 				FA3938A5EED34CBA9105D164 /* JetBrainsMono-Medium-Italic.ttf */,
 				B750E236026B4CE9B65B3EEA /* JetBrainsMono-Medium.ttf */,
 				0E587CDA63354DF29086DE8A /* JetBrainsMono-Regular.ttf */,
+				1021C30D0919446A92E38A66 /* FtyStrategycideNcv-elGl.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				BEF10D85D9394417A7192747 /* JetBrainsMono-Medium-Italic.ttf in Resources */,
 				40DD904A6194435999EFCAA2 /* JetBrainsMono-Medium.ttf in Resources */,
 				E7A09F338C5443AE82364FE8 /* JetBrainsMono-Regular.ttf in Resources */,
+				63D719E86F174D71B496B9D2 /* FtyStrategycideNcv-elGl.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

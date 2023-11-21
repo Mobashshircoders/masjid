@@ -5,7 +5,7 @@ import GalleryItem from './GalleryItem';
 import {DEFAULT_ITEMS} from '../Components/ControlComponents/DefaultItemVertical';
 import GalleryItemVertical from './GalleryItemVertical';
 
-const GalleryVertical = ({rowNumber}) => {
+const GalleryVertical = ({navigation, rowNumber}) => {
   const items = shuffle(DEFAULT_ITEMS);
 
   return (
@@ -17,6 +17,7 @@ const GalleryVertical = ({rowNumber}) => {
           image={item.image}
           hasTVPreferredFocus={rowNumber === 0 && i === 0}
           blockFocusRight={i === items.length - 1}
+          navigation={navigation}
         />
       ))}
     </ScrollView>

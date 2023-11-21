@@ -1,10 +1,10 @@
 import React from 'react';
-import {StyleSheet, ScrollView} from 'react-native';
+import {StyleSheet, ScrollView, TouchableHighlight} from 'react-native';
 import shuffle from 'lodash.shuffle';
 import GalleryItem from './GalleryItem';
 import {DEFAULT_ITEMS_THREE} from '../Components/ControlComponents/DefaultItem';
 
-const GalleryThree = ({rowNumber}) => {
+const GalleryThree = ({navigation, rowNumber}) => {
   const items = shuffle(DEFAULT_ITEMS_THREE);
 
   return (
@@ -16,6 +16,7 @@ const GalleryThree = ({rowNumber}) => {
           image={item.image}
           hasTVPreferredFocus={rowNumber === 0 && i === 0}
           blockFocusRight={i === items.length - 1}
+          navigation={navigation}
         />
       ))}
     </ScrollView>

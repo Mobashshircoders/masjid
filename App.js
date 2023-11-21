@@ -79,6 +79,17 @@ import VerticalLeanBackGrid from './Components/VerticalLeanBackGrid';
 import ChooseLanguage from './Components/chooselanguage';
 import GetSearchPage from './Components/GetSearchPage';
 import TestPage from './Components/testpage';
+import EnglishFont from './Components/EnglishFont';
+import ArabicFont from './Components/ArabicFont';
+import GalleryTwo from './Components/Gallerytwo';
+import GalleryThree from './Components/Gallerythree';
+import GalleryFour from './Components/Galleryfour';
+import GalleryItemVertical from './Components/GalleryItemVertical';
+import GalleryVertical from './Components/Galleryvertical';
+import GalleryVerticalTwo from './Components/Galleryverticaltwo';
+import GalleryVerticalThree from './Components/Galleryverticalthree';
+import GalleryVerticalFour from './Components/Galleryverticalfour';
+import GalleryFive from './Components/Galleryfive';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -102,14 +113,43 @@ const App = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="Home" component={TestPage} />
-        {/* <Stack.Screen name="Home" component={SearchPage} /> */}
+        {/* <Stack.Screen name="Home" component={TestPage} /> */}
+        <Stack.Screen name="Home" component={GetSearchPage} />
         <Stack.Screen
           name="HorizontalMenu"
           component={HorizontalLeanBackGrid}
         />
+        <Stack.Screen
+          name="ChooseOrientation"
+          component={ChooseOrientationMenu}
+        />
         <Stack.Screen name="VerticalMenu" component={VerticalLeanBackGrid} />
         <Stack.Screen name="ChooseLanguage" component={ChooseLanguage} />
+        <Stack.Screen name="EnglishFont" component={EnglishFont} />
+        <Stack.Screen name="ArabicFont" component={ArabicFont} />
+        <Stack.Screen name="GalleryItem" component={GalleryItem} />
+        <Stack.Screen name="Gallery" component={Gallery} />
+        <Stack.Screen name="Gallerytwo" component={GalleryTwo} />
+        <Stack.Screen name="Gallerythree" component={GalleryThree} />
+        <Stack.Screen name="Galleryfour" component={GalleryFour} />
+        <Stack.Screen name="Galleryfive" component={GalleryFive} />
+        <Stack.Screen
+          name="GalleryItemVertical"
+          component={GalleryItemVertical}
+        />
+        <Stack.Screen name="Galleryvertical" component={GalleryVertical} />
+        <Stack.Screen
+          name="Galleryverticaltwo"
+          component={GalleryVerticalTwo}
+        />
+        <Stack.Screen
+          name="Galleryverticalthree"
+          component={GalleryVerticalThree}
+        />
+        <Stack.Screen
+          name="Galleryverticalfour"
+          component={GalleryVerticalFour}
+        />
         <Stack.Screen name="Imageslider" component={Imageslider} />
         <Stack.Screen name="HDesign1" component={Designonechoose} />
         <Stack.Screen name="HDesign2" component={Designtwo} />
