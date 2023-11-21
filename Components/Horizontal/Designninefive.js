@@ -36,7 +36,7 @@ const Designninefive = ({navigation}) => {
       //console.log(tim);
 
       //this.setState({Nextazaan: new Date().getHours()});
-    }, 600000);
+    }, 6000);
   });
   return (
     <SafeAreaView style={styles.container}>
