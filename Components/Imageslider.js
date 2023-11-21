@@ -4,6 +4,7 @@ import {SliderBox} from 'react-native-image-slider-box';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Iqamatime from './Iqamatime';
+import DefaultPreference from 'react-native-default-preference';
 
 //import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
@@ -17,9 +18,11 @@ class Imageslider extends React.Component {
         // 'https://source.unsplash.com/1024x768/?water',
 
         // 'https://source.unsplash.com/1024x768/?tree', // Network image
-        require('./imgs/hadith2.jpg'), // Local image
-        require('./imgs/hadith3.jpg'), // Local image
-        require('./imgs/hadith4.jpg'), // Local image
+        require('./imgs/3.jpg'), // Local image
+        require('./imgs/4.jpg'), // Local image
+        require('./imgs/5.jpg'), // Local image
+        require('./imgs/6.jpg'), // Local image
+        require('./imgs/7.jpg'), // Local image
       ],
     };
   }
@@ -64,7 +67,8 @@ class Imageslider extends React.Component {
           images={this.state.images}
           autoplay
           circleLoop
-          height={1500}
+          height={800}
+          ImageComponentStyle={{height: '50%', width: '97%', marginTop: 5}}
           //   onCurrentImagePressed={index =>
           //     console.warn(`image ${index} pressed`)
           //   }

@@ -64,6 +64,8 @@ class Iqamatime {
   async getiqamaafter() {
     await this.getData();
 
+    return -1;
+
     var currdate = new Date();
 
     var year = currdate.getFullYear();

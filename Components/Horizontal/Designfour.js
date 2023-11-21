@@ -19,6 +19,7 @@ import Nextazaanctrl from '../ControlComponents/Nextazaanctrl';
 import Jumatime from '../ControlComponents/Jumatime';
 import Iqamatime from '../Iqamatime';
 import Imageslider from '../Imageslider';
+import DefaultPreference from 'react-native-default-preference';
 
 const Designfour = ({navigation}) => {
   useEffect(() => {
@@ -34,7 +35,7 @@ const Designfour = ({navigation}) => {
       //console.log(tim);
 
       //this.setState({Nextazaan: new Date().getHours()});
-    }, 600000);
+    }, 6000);
   });
   return (
     <SafeAreaView style={styles.container}>
