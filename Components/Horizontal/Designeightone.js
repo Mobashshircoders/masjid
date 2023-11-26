@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -23,9 +23,22 @@ import Designeightbase from './Designeightbase';
 import Designeightbasetwo from './Designeightbasetwo';
 import Iqamatime from '../Iqamatime';
 import Imageslider from '../Imageslider';
+import DefaultPreference from 'react-native-default-preference';
 
 const Designeightone = ({navigation}) => {
+  const [font, setFont] = useState('');
+
+  function getFont() {
+    try {
+      DefaultPreference.get('font').then(function (value) {
+        setFont(value);
+      });
+    } catch (e) {
+      // error reading value
+    }
+  }
   useEffect(() => {
+    getFont();
     setInterval(() => {
       var _data = new Iqamatime();
       //console.log('tempcheck');
@@ -127,13 +140,13 @@ const styles = StyleSheet.create({
   dayname: {
     color: 'black',
     fontSize: 24,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   arabicdate: {
     color: 'black',
     fontSize: 27,
-    fontFamily: 'JetBrainsMono-Bold',
+
     alignSelf: 'center',
   },
   horizontalline: {
@@ -174,23 +187,21 @@ const styles = StyleSheet.create({
   header: {
     color: 'black',
     fontSize: 25,
-    fontFamily: 'AbdoullahAshgar',
   },
   azantime: {
     color: '#f75a4f',
     fontSize: 28,
-    fontFamily: 'JetBrainsMono-Bold',
   },
   namaaztext: {
     color: 'black',
     fontSize: 28,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   bottomtext: {
     color: 'black',
     fontSize: 28,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   layernineimg: {
@@ -204,6 +215,5 @@ const styles = StyleSheet.create({
     marginRight: '5%',
     color: 'black',
     fontSize: 23,
-    fontFamily: 'AbdoullahAshgar',
   },
 });

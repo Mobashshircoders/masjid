@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -35,8 +35,23 @@ import Shuruqtext from '../Controls/Shuruqtext';
 import Azaantext from '../Controls/Azaantext';
 import Iqamatime from '../Iqamatime';
 import Imageslider from '../Imageslider';
+import DefaultPreference from 'react-native-default-preference';
 
 const Designninebase = ({imgpath, navigation}) => {
+  const [font, setFont] = useState('');
+
+  function getFont() {
+    try {
+      DefaultPreference.get('font').then(function (value) {
+        setFont(value);
+      });
+    } catch (e) {
+      // error reading value
+    }
+  }
+  useEffect(() => {
+    getFont();
+  });
   return (
     <ImageBackground
       style={{flex: 1}}
@@ -50,24 +65,28 @@ const Designninebase = ({imgpath, navigation}) => {
             <View style={styles.rightoneinner}>
               <View style={styles.rightoneinnerone}>
                 <View style={styles.bone}>
-                  <Arabicclockdate style={styles.Arabicdatetext} />
+                  <Arabicclockdate
+                    style={[styles.Arabicdatetext, {fontFamily: font}]}
+                  />
                 </View>
                 <View style={styles.btwo}>
-                  <Engclockdate style={styles.Englishdatetext} />
+                  <Engclockdate
+                    style={[styles.Englishdatetext, {fontFamily: font}]}
+                  />
                 </View>
               </View>
               <View style={styles.rightoneinnertwo}>
-                <Currentdayeng style={styles.DayofWeek} />
+                <Currentdayeng style={[styles.DayofWeek, {fontFamily: font}]} />
               </View>
             </View>
           </View>
         </View>
         <View style={styles.containermiddle}>
           <View style={styles.lefttwo}>
-            <Iqamaaftertext style={styles.Iqamatext} />
-            <Iqamaafter style={styles.Iqamatime} />
-            <Nextazaantext style={styles.NextAzantext} />
-            <Nextazaan style={styles.Nextazaantime} />
+            <Iqamaaftertext style={[styles.Iqamatext, {fontFamily: font}]} />
+            <Iqamaafter style={[styles.Iqamatime, {fontFamily: font}]} />
+            <Nextazaantext style={[styles.NextAzantext, {fontFamily: font}]} />
+            <Nextazaan style={[styles.Nextazaantime, {fontFamily: font}]} />
           </View>
           <View style={styles.middletwo}>
             {(() => {
@@ -112,10 +131,10 @@ const Designninebase = ({imgpath, navigation}) => {
             })()}
           </View>
           <View style={styles.righttwo}>
-            <Jumuatext style={styles.Iqamatext} />
-            <Jumuatime style={styles.Iqamatime} />
-            <Shuruqtext style={styles.NextAzantext} />
-            <Shawwaltime style={styles.Nextazaantime} />
+            <Jumuatext style={[styles.Iqamatext, {fontFamily: font}]} />
+            <Jumuatime style={[styles.Iqamatime, {fontFamily: font}]} />
+            <Shuruqtext style={[styles.NextAzantext, {fontFamily: font}]} />
+            <Shawwaltime style={[styles.Nextazaantime, {fontFamily: font}]} />
           </View>
         </View>
         <View style={styles.containersecondlast}>
@@ -125,29 +144,31 @@ const Designninebase = ({imgpath, navigation}) => {
         </View>
         <View style={styles.containerbottom}>
           <View style={styles.aone}>
-            <Fajrtext style={styles.Namaaztext} />
-            <Fajrtime style={styles.Namaaztime} />
+            <Fajrtext style={[styles.Namaaztext, {fontFamily: font}]} />
+            <Fajrtime style={[styles.Namaaztime, {fontFamily: font}]} />
           </View>
           <View style={styles.aone}>
-            <Dhuhrtext style={styles.Namaaztext} />
-            <Dhuhrtime style={styles.Namaaztime} />
+            <Dhuhrtext style={[styles.Namaaztext, {fontFamily: font}]} />
+            <Dhuhrtime style={[styles.Namaaztime, {fontFamily: font}]} />
           </View>
           <View style={styles.aone}>
-            <Asrtext style={styles.Namaaztext} />
-            <Asrtime style={styles.Namaaztime} />
+            <Asrtext style={[styles.Namaaztext, {fontFamily: font}]} />
+            <Asrtime style={[styles.Namaaztime, {fontFamily: font}]} />
           </View>
           <View style={styles.aone}>
-            <Maghribtext style={styles.Namaaztext} />
-            <Maghribtime style={styles.Namaaztime} />
+            <Maghribtext style={[styles.Namaaztext, {fontFamily: font}]} />
+            <Maghribtime style={[styles.Namaaztime, {fontFamily: font}]} />
           </View>
           <View style={styles.aone}>
-            <Ishatext style={styles.Namaaztext} />
-            <Ishatime style={styles.Namaaztime} />
+            <Ishatext style={[styles.Namaaztext, {fontFamily: font}]} />
+            <Ishatime style={[styles.Namaaztime, {fontFamily: font}]} />
           </View>
         </View>
         <View style={styles.containerlast}>
           <View style={styles.middlelast}>
-            <Text style={styles.headermosquename}>Mosque Name</Text>
+            <Text style={[styles.headermosquename, {fontFamily: font}]}>
+              Mosque Name
+            </Text>
           </View>
         </View>
       </View>
@@ -240,56 +261,54 @@ const styles = StyleSheet.create({
   Arabicdatetext: {
     color: 'white',
     fontSize: 25,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   Englishdatetext: {
     color: 'white',
     fontSize: 25,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   DayofWeek: {
     color: 'white',
     fontSize: 27,
-    fontFamily: 'JetBrainsMono-Bold',
+
     alignSelf: 'center',
   },
   Iqamatext: {
     color: 'white',
     fontSize: 27,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   Iqamatime: {
     color: 'white',
     fontSize: 30,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   NextAzantext: {
     color: 'white',
     fontSize: 27,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   Nextazaantime: {
     color: 'white',
     fontSize: 30,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   Namaaztext: {
     color: 'white',
     fontSize: 30,
-    fontFamily: 'JetBrainsMono-Bold',
 
     alignSelf: 'center',
   },
   Namaaztime: {
     color: 'white',
     fontSize: 28,
-    fontFamily: 'JetBrainsMono-Bold',
 
     alignSelf: 'center',
   },

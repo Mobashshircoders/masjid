@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 //import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Fajrtime from '../Controls/Fajrtime';
@@ -14,25 +14,42 @@ import Maghribtext from '../Controls/Maghribtext';
 import Ishatext from '../Controls/Ishatext';
 import Jumuatext from '../Controls/Jumuatext';
 import Shuruqtext from '../Controls/Shuruqtext';
+import DefaultPreference from 'react-native-default-preference';
 
 const Namaaztimingtwo = () => {
+  const [font, setFont] = useState('');
+
+  useEffect(() => {
+    getFont();
+  });
+
+  function getFont() {
+    try {
+      DefaultPreference.get('font').then(function (value) {
+        setFont(value);
+      });
+    } catch (e) {
+      // error reading value
+    }
+  }
+
   return (
     <View style={styles.mosquetimingwrapper}>
       <View style={styles.textazanvertical}>
-        <Fajrtime style={styles.azantime} />
-        <Dhuhrtime style={styles.azantime} />
-        <Asrtime style={styles.azantime} />
-        <Maghribtime style={styles.azantime} />
-        <Ishatime style={styles.azantime} />
-        <Jumuatime style={styles.azantime} />
+        <Fajrtime style={[styles.azantime, {fontFamily: font}]} />
+        <Dhuhrtime style={[styles.azantime, {fontFamily: font}]} />
+        <Asrtime style={[styles.azantime, {fontFamily: font}]} />
+        <Maghribtime style={[styles.azantime, {fontFamily: font}]} />
+        <Ishatime style={[styles.azantime, {fontFamily: font}]} />
+        <Jumuatime style={[styles.azantime, {fontFamily: font}]} />
       </View>
       <View style={styles.in2}>
-        <Fajrtext style={styles.namaaztext} />
-        <Dhuhrtext style={styles.namaaztext} />
-        <Asrtext style={styles.namaaztext} />
-        <Maghribtext style={styles.namaaztext} />
-        <Ishatext style={styles.namaaztext} />
-        <Jumuatext style={styles.namaaztext} />
+        <Fajrtext style={[styles.namaaztext, {fontFamily: font}]} />
+        <Dhuhrtext style={[styles.namaaztext, {fontFamily: font}]} />
+        <Asrtext style={[styles.namaaztext, {fontFamily: font}]} />
+        <Maghribtext style={[styles.namaaztext, {fontFamily: font}]} />
+        <Ishatext style={[styles.namaaztext, {fontFamily: font}]} />
+        <Jumuatext style={[styles.namaaztext, {fontFamily: font}]} />
       </View>
     </View>
   );
@@ -59,12 +76,11 @@ const styles = StyleSheet.create({
   azantime: {
     color: '#f75a4f',
     fontSize: 37,
-    fontFamily: 'JetBrainsMono-Bold',
   },
   namaaztext: {
     color: 'white',
     fontSize: 37,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 //import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Fajrazaantime from '../Controls/Fajrazaantime';
@@ -23,24 +23,41 @@ import Shuruqtext from '../Controls/Shuruqtext';
 import Azaantext from '../Controls/Azaantext';
 import Salattext from '../Controls/Salattext';
 import Iqamatext from '../Controls/Iqamatext';
+import DefaultPreference from 'react-native-default-preference';
 
 const Namaazprayername = () => {
+  const [font, setFont] = useState('');
+
+  useEffect(() => {
+    getFont();
+  });
+
+  function getFont() {
+    try {
+      DefaultPreference.get('font').then(function (value) {
+        setFont(value);
+      });
+    } catch (e) {
+      // error reading value
+    }
+  }
+
   return (
     <View style={styles.mosquetimingwrapper}>
       <View style={styles.mosquetimings}>
-        <Fajrtext style={styles.timingtext} />
+        <Fajrtext style={[styles.timingtext, {fontFamily: font}]} />
       </View>
       <View style={styles.mosquetimings}>
-        <Dhuhrtext style={styles.timingtext} />
+        <Dhuhrtext style={[styles.timingtext, {fontFamily: font}]} />
       </View>
       <View style={styles.mosquetimings}>
-        <Asrtext style={styles.timingtext} />
+        <Asrtext style={[styles.timingtext, {fontFamily: font}]} />
       </View>
       <View style={styles.mosquetimings}>
-        <Maghribtext style={styles.timingtext} />
+        <Maghribtext style={[styles.timingtext, {fontFamily: font}]} />
       </View>
       <View style={styles.mosquetimings}>
-        <Ishatext style={styles.timingtext} />
+        <Ishatext style={[styles.timingtext, {fontFamily: font}]} />
       </View>
     </View>
   );
@@ -59,12 +76,10 @@ const styles = StyleSheet.create({
   timingtext: {
     fontSize: 32,
     color: 'white',
-    fontFamily: 'JetBrainsMono-Bold',
   },
   timingtext1: {
     fontSize: 34,
     color: 'orange',
-    fontFamily: 'JetBrainsMono-ExtraBold',
   },
 });
 

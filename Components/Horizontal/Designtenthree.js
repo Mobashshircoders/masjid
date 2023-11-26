@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -29,9 +29,22 @@ import Nextazaantext from '../Controls/Nextazaantext';
 import Iqamaaftertext from '../Controls/Iqamaaftertext';
 import Iqamatime from '../Iqamatime';
 import Imageslider from '../Imageslider';
+import DefaultPreference from 'react-native-default-preference';
 
 const Designtenthree = ({navigation}) => {
+  const [font, setFont] = useState('');
+
+  function getFont() {
+    try {
+      DefaultPreference.get('font').then(function (value) {
+        setFont(value);
+      });
+    } catch (e) {
+      // error reading value
+    }
+  }
   useEffect(() => {
+    getFont();
     setInterval(() => {
       var _data = new Iqamatime();
       //console.log('tempcheck');
@@ -55,12 +68,14 @@ const Designtenthree = ({navigation}) => {
           <View style={styles.containerleft}>
             <View style={styles.cr1}></View>
             <View style={styles.cr2}>
-              <Currentdayeng style={styles.dayname} />
+              <Currentdayeng style={[styles.dayname, {fontFamily: font}]} />
             </View>
             <View style={styles.cr3}>
-              <Arabicclockdate style={styles.arabicdate} />
+              <Arabicclockdate
+                style={[styles.arabicdate, {fontFamily: font}]}
+              />
 
-              <Engclockdate style={styles.arabicdate} />
+              <Engclockdate style={[styles.arabicdate, {fontFamily: font}]} />
             </View>
             <View style={styles.cr4}>
               <Image
@@ -73,17 +88,19 @@ const Designtenthree = ({navigation}) => {
             </View>
             <View style={styles.cr6}>
               <View style={styles.vertical1}>
-                <Nextazaantext style={styles.dayname} />
-                <Nextazaan style={styles.dayname} />
+                <Nextazaantext style={[styles.dayname, {fontFamily: font}]} />
+                <Nextazaan style={[styles.dayname, {fontFamily: font}]} />
               </View>
 
               <View style={styles.vertical1}>
-                <Iqamaaftertext style={styles.dayname} />
-                <Iqamaafter style={styles.dayname} />
+                <Iqamaaftertext style={[styles.dayname, {fontFamily: font}]} />
+                <Iqamaafter style={[styles.dayname, {fontFamily: font}]} />
               </View>
             </View>
             <View style={styles.cr7}>
-              <Text style={styles.headermosquename}>Mosque Name</Text>
+              <Text style={[styles.headermosquename, {fontFamily: font}]}>
+                Mosque Name
+              </Text>
             </View>
           </View>
           <View style={styles.containerright}>
@@ -210,13 +227,13 @@ const styles = StyleSheet.create({
   dayname: {
     color: 'white',
     fontSize: 24,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   arabicdate: {
     color: 'white',
     fontSize: 27,
-    fontFamily: 'JetBrainsMono-Bold',
+
     alignSelf: 'center',
   },
   horizontalline: {
@@ -257,23 +274,21 @@ const styles = StyleSheet.create({
   header: {
     color: 'white',
     fontSize: 25,
-    fontFamily: 'AbdoullahAshgar',
   },
   azantime: {
     color: '#f75a4f',
     fontSize: 28,
-    fontFamily: 'JetBrainsMono-Bold',
   },
   namaaztext: {
     color: 'white',
     fontSize: 28,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   bottomtext: {
     color: 'white',
     fontSize: 28,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   layernineimg: {
@@ -287,6 +302,5 @@ const styles = StyleSheet.create({
     marginRight: '5%',
     color: 'white',
     fontSize: 23,
-    fontFamily: 'AbdoullahAshgar',
   },
 });

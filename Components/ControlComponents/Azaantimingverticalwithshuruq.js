@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 //import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Fajrazaantime from '../Controls/Fajrazaantime';
@@ -23,32 +23,49 @@ import Shuruqtext from '../Controls/Shuruqtext';
 import Azaantext from '../Controls/Azaantext';
 import Salattext from '../Controls/Salattext';
 import Iqamatext from '../Controls/Iqamatext';
+import DefaultPreference from 'react-native-default-preference';
 
 const Azaantimingverticalwithshuruq = () => {
+  const [font, setFont] = useState('');
+
+  useEffect(() => {
+    getFont();
+  });
+
+  function getFont() {
+    try {
+      DefaultPreference.get('font').then(function (value) {
+        setFont(value);
+      });
+    } catch (e) {
+      // error reading value
+    }
+  }
+
   return (
     <View style={styles.mosquetimingwrapper}>
       <View style={styles.mosquetimings}>
-        <Fajrazaantime style={styles.timingtext1} />
+        <Fajrazaantime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
       <View style={styles.viewheight}></View>
       <View style={styles.mosquetimings}>
-        <Dhuhrazaantime style={styles.timingtext1} />
+        <Dhuhrazaantime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
       <View style={styles.viewheight}></View>
       <View style={styles.mosquetimings}>
-        <Asrazaantime style={styles.timingtext1} />
+        <Asrazaantime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
       <View style={styles.viewheight}></View>
       <View style={styles.mosquetimings}>
-        <Maghribazaantime style={styles.timingtext1} />
+        <Maghribazaantime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
       <View style={styles.viewheight}></View>
       <View style={styles.mosquetimings}>
-        <Ishaazaantime style={styles.timingtext1} />
+        <Ishaazaantime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
       <View style={styles.viewheight}></View>
       <View style={styles.mosquetimings}>
-        <Shawwaltime style={styles.timingtext1} />
+        <Shawwaltime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
     </View>
   );
@@ -66,12 +83,10 @@ const styles = StyleSheet.create({
   timingtext: {
     fontSize: 32,
     color: 'white',
-    fontFamily: 'JetBrainsMono-Bold',
   },
   timingtext1: {
     fontSize: 34,
     color: 'orange',
-    fontFamily: 'JetBrainsMono-ExtraBold',
   },
   viewheight: {
     height: '3%',

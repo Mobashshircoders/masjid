@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 //import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Fajrazaantime from '../Controls/Fajrazaantime';
@@ -23,27 +23,44 @@ import Shuruqtext from '../Controls/Shuruqtext';
 import Azaantext from '../Controls/Azaantext';
 import Salattext from '../Controls/Salattext';
 import Iqamatext from '../Controls/Iqamatext';
+import DefaultPreference from 'react-native-default-preference';
 
 const Namaaztimingvertical = () => {
+  const [font, setFont] = useState('');
+
+  useEffect(() => {
+    getFont();
+  });
+
+  function getFont() {
+    try {
+      DefaultPreference.get('font').then(function (value) {
+        setFont(value);
+      });
+    } catch (e) {
+      // error reading value
+    }
+  }
+
   return (
     <View style={styles.mosquetimingwrapper}>
       <View style={styles.mosquetimings}>
-        <Fajrtime style={styles.timingtext1} />
+        <Fajrtime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
       <View style={styles.mosquetimings}>
-        <Dhuhrtime style={styles.timingtext1} />
+        <Dhuhrtime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
       <View style={styles.mosquetimings}>
-        <Asrtime style={styles.timingtext1} />
+        <Asrtime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
       <View style={styles.mosquetimings}>
-        <Maghribtime style={styles.timingtext1} />
+        <Maghribtime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
       <View style={styles.mosquetimings}>
-        <Ishatime style={styles.timingtext1} />
+        <Ishatime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
       <View style={styles.mosquetimings}>
-        <Shawwaltime style={styles.timingtext1} />
+        <Shawwaltime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
     </View>
   );
@@ -61,12 +78,10 @@ const styles = StyleSheet.create({
   timingtext: {
     fontSize: 30,
     color: 'white',
-    fontFamily: 'JetBrainsMono-Bold',
   },
   timingtext1: {
     fontSize: 30,
     color: 'orange',
-    fontFamily: 'JetBrainsMono-ExtraBold',
   },
 });
 

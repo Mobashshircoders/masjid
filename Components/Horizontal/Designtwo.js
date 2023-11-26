@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
     color: 'white',
 
     textAlign: 'center',
-    fontFamily: 'GEDinar',
   },
   container: {
     flex: 1,

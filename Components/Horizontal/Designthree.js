@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -116,7 +116,6 @@ const styles = StyleSheet.create({
 
     textAlign: 'center',
     //fontFamily: defaultstyle,
-    fontFamily: 'GEDinar',
   },
   container: {
     flex: 1,

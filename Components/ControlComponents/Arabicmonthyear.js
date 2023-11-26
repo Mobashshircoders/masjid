@@ -26,12 +26,14 @@ const Arabicmonthyear = () => {
   return (
     <View style={styles.container}>
       <View style={styles.textdate}>
-        <Currentdatearabic style={styles.arabicdate} />
+        <Currentdatearabic style={[styles.arabicdate, {fontFamily: font}]} />
       </View>
 
       <View style={styles.arabicyearview}>
-        <Currentmontharabic style={styles.arabicmonthname} />
-        <Currentyeararabic style={styles.arabicyear} />
+        <Currentmontharabic
+          style={[styles.arabicmonthname, {fontFamily: font}]}
+        />
+        <Currentyeararabic style={[styles.arabicyear, {fontFamily: font}]} />
       </View>
     </View>
   );
@@ -53,19 +55,19 @@ const styles = StyleSheet.create({
   arabicdate: {
     color: 'white',
     fontSize: 70,
-    fontFamily: 'JetBrainsMono-ExtraBold',
+
     alignSelf: 'center',
   },
   arabicmonthname: {
     color: 'white',
     fontSize: 35,
-    fontFamily: 'JetBrainsMono-ExtraBold',
+
     alignSelf: 'center',
   },
   arabicyear: {
     color: 'white',
     fontSize: 35,
-    fontFamily: 'JetBrainsMono-ExtraBold',
+
     alignSelf: 'center',
   },
 });

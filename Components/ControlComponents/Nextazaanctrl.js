@@ -6,12 +6,21 @@ import Iqamaafter from '../Controls/Iqamaafter';
 import DefaultPreference from 'react-native-default-preference';
 
 const Nextazaanctrl = () => {
-  let Customestyle = '';
-  const [customeStyle, setcustomestyle] = useState('');
+  const [font, setFont] = useState('');
+
   useEffect(() => {
-    Customestyle = DefaultPreference.get('DynamicFont');
-    console.log('Text' + Customestyle);
+    getFont();
   });
+
+  function getFont() {
+    try {
+      DefaultPreference.get('font').then(function (value) {
+        setFont(value);
+      });
+    } catch (e) {
+      // error reading value
+    }
+  }
   const styles = StyleSheet.create({
     container1: {
       flex: 1,
@@ -29,7 +38,7 @@ const Nextazaanctrl = () => {
     nextazaantext: {
       color: 'white',
       fontSize: 30,
-      fontFamily: 'AbdoullahAshgar',
+
       // fontFamily: customeStyle,
 
       alignSelf: 'center',
@@ -37,32 +46,36 @@ const Nextazaanctrl = () => {
     nextazaantime: {
       color: 'white',
       fontSize: 40,
-      fontFamily: 'AbdoullahAshgar',
+
       alignSelf: 'center',
     },
     iqamaaftertext: {
       color: 'white',
       fontSize: 30,
-      fontFamily: 'AbdoullahAshgar',
+
       alignSelf: 'center',
     },
     iqamaaftertime: {
       color: 'white',
       fontSize: 40,
-      fontFamily: 'AbdoullahAshgar',
+
       alignSelf: 'center',
     },
   });
   return (
     <View style={styles.container1}>
       <View style={styles.nextazaanview}>
-        <Text style={styles.nextazaantext}>Next Azaan</Text>
-        <Nextazaan style={styles.nextazaantime} />
+        <Text style={[styles.nextazaantext, {fontFamily: font}]}>
+          Next Azaan
+        </Text>
+        <Nextazaan style={[styles.nextazaantime, {fontFamily: font}]} />
       </View>
 
       <View style={styles.iqamaafterview}>
-        <Text style={styles.iqamaaftertext}>Iqama After</Text>
-        <Iqamaafter style={styles.iqamaaftertime} />
+        <Text style={[styles.iqamaaftertext, {fontFamily: font}]}>
+          Iqama After
+        </Text>
+        <Iqamaafter style={[styles.iqamaaftertime, {fontFamily: font}]} />
       </View>
     </View>
   );

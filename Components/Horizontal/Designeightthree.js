@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -43,9 +43,22 @@ import Nextazaantext from '../Controls/Nextazaantext';
 import Iqamaaftertext from '../Controls/Iqamaaftertext';
 import Iqamatime from '../Iqamatime';
 import Imageslider from '../Imageslider';
+import DefaultPreference from 'react-native-default-preference';
 
 const Designeightthree = ({navigation}) => {
+  const [font, setFont] = useState('');
+
+  function getFont() {
+    try {
+      DefaultPreference.get('font').then(function (value) {
+        setFont(value);
+      });
+    } catch (e) {
+      // error reading value
+    }
+  }
   useEffect(() => {
+    getFont();
     setInterval(() => {
       var _data = new Iqamatime();
       //console.log('tempcheck');
@@ -73,50 +86,76 @@ const Designeightthree = ({navigation}) => {
               <View style={styles.ct2}>
                 <View style={styles.cd1}>
                   <View style={styles.texthorizontal}>
-                    <Azaantext style={styles.header} />
-                    <Salattext style={styles.header} />
-                    <Iqamatext style={styles.header} />
+                    <Azaantext style={[styles.header, {fontFamily: font}]} />
+                    <Salattext style={[styles.header, {fontFamily: font}]} />
+                    <Iqamatext style={[styles.header, {fontFamily: font}]} />
                   </View>
                 </View>
                 <View style={styles.cd2}>
                   <View style={styles.in1}>
                     <View style={styles.textazanvertical}>
-                      <Fajrazaantime style={styles.azantime} />
-                      <Dhuhrazaantime style={styles.azantime} />
-                      <Asrazaantime style={styles.azantime} />
-                      <Maghribazaantime style={styles.azantime} />
-                      <Ishaazaantime style={styles.azantime} />
+                      <Fajrazaantime
+                        style={[styles.azantime, {fontFamily: font}]}
+                      />
+                      <Dhuhrazaantime
+                        style={[styles.azantime, {fontFamily: font}]}
+                      />
+                      <Asrazaantime
+                        style={[styles.azantime, {fontFamily: font}]}
+                      />
+                      <Maghribazaantime
+                        style={[styles.azantime, {fontFamily: font}]}
+                      />
+                      <Ishaazaantime
+                        style={[styles.azantime, {fontFamily: font}]}
+                      />
                     </View>
                   </View>
                   <View style={styles.in2}>
-                    <Fajrtext style={styles.namaaztext} />
-                    <Dhuhrtext style={styles.namaaztext} />
-                    <Asrtext style={styles.namaaztext} />
-                    <Maghribtext style={styles.namaaztext} />
-                    <Ishatext style={styles.namaaztext} />
+                    <Fajrtext style={[styles.namaaztext, {fontFamily: font}]} />
+                    <Dhuhrtext
+                      style={[styles.namaaztext, {fontFamily: font}]}
+                    />
+                    <Asrtext style={[styles.namaaztext, {fontFamily: font}]} />
+                    <Maghribtext
+                      style={[styles.namaaztext, {fontFamily: font}]}
+                    />
+                    <Ishatext style={[styles.namaaztext, {fontFamily: font}]} />
                   </View>
                   <View style={styles.in3}>
                     <View style={styles.textazanvertical}>
-                      <Fajrtime style={styles.azantime} />
-                      <Dhuhrtime style={styles.azantime} />
-                      <Asrtime style={styles.azantime} />
-                      <Maghribtime style={styles.azantime} />
-                      <Ishatime style={styles.azantime} />
+                      <Fajrtime style={[styles.azantime, {fontFamily: font}]} />
+                      <Dhuhrtime
+                        style={[styles.azantime, {fontFamily: font}]}
+                      />
+                      <Asrtime style={[styles.azantime, {fontFamily: font}]} />
+                      <Maghribtime
+                        style={[styles.azantime, {fontFamily: font}]}
+                      />
+                      <Ishatime style={[styles.azantime, {fontFamily: font}]} />
                     </View>
                   </View>
                 </View>
                 <View style={styles.cd3}>
                   <View style={styles.ij1}>
                     <View style={styles.textazanrect}>
-                      <Jumuatext style={styles.bottomtext} />
-                      <Jumuatime style={styles.bottomtext} />
+                      <Jumuatext
+                        style={[styles.bottomtext, {fontFamily: font}]}
+                      />
+                      <Jumuatime
+                        style={[styles.bottomtext, {fontFamily: font}]}
+                      />
                     </View>
                   </View>
                   <View style={styles.ij2}></View>
                   <View style={styles.ij3}>
                     <View style={styles.textazanrect}>
-                      <Shuruqtext style={styles.bottomtext} />
-                      <Shawwaltime style={styles.bottomtext} />
+                      <Shuruqtext
+                        style={[styles.bottomtext, {fontFamily: font}]}
+                      />
+                      <Shawwaltime
+                        style={[styles.bottomtext, {fontFamily: font}]}
+                      />
                     </View>
                   </View>
                 </View>
@@ -128,12 +167,14 @@ const Designeightthree = ({navigation}) => {
           <View style={styles.containerright}>
             <View style={styles.cr1}></View>
             <View style={styles.cr2}>
-              <Currentdayeng style={styles.dayname} />
+              <Currentdayeng style={[styles.dayname, {fontFamily: font}]} />
             </View>
             <View style={styles.cr3}>
-              <Arabicclockdate style={styles.arabicdate} />
+              <Arabicclockdate
+                style={[styles.arabicdate, {fontFamily: font}]}
+              />
               <View style={styles.horizontalline}></View>
-              <Engclockdate style={styles.arabicdate} />
+              <Engclockdate style={[styles.arabicdate, {fontFamily: font}]} />
             </View>
             <View style={styles.cr4}>
               <Image
@@ -146,18 +187,20 @@ const Designeightthree = ({navigation}) => {
             </View>
             <View style={styles.cr6}>
               <View style={styles.vertical1}>
-                <Nextazaantext style={styles.dayname} />
-                <Nextazaan style={styles.dayname} />
+                <Nextazaantext style={[styles.dayname, {fontFamily: font}]} />
+                <Nextazaan style={[styles.dayname, {fontFamily: font}]} />
               </View>
 
               <View style={styles.verticalline}></View>
               <View style={styles.vertical1}>
-                <Iqamaaftertext style={styles.dayname} />
-                <Iqamaafter style={styles.dayname} />
+                <Iqamaaftertext style={[styles.dayname, {fontFamily: font}]} />
+                <Iqamaafter style={[styles.dayname, {fontFamily: font}]} />
               </View>
             </View>
             <View style={styles.cr7}>
-              <Text style={styles.headermosquename}>Mosque Name</Text>
+              <Text style={[styles.headermosquename, {fontFamily: font}]}>
+                Mosque Name
+              </Text>
             </View>
           </View>
         </View>
@@ -272,13 +315,11 @@ const styles = StyleSheet.create({
   dayname: {
     color: 'white',
     fontSize: 24,
-    fontFamily: 'AbdoullahAshgar',
     alignSelf: 'center',
   },
   arabicdate: {
     color: 'white',
     fontSize: 27,
-    fontFamily: 'JetBrainsMono-Bold',
     alignSelf: 'center',
   },
   horizontalline: {
@@ -319,23 +360,21 @@ const styles = StyleSheet.create({
   header: {
     color: 'white',
     fontSize: 25,
-    fontFamily: 'AbdoullahAshgar',
   },
   azantime: {
     color: '#f75a4f',
     fontSize: 28,
-    fontFamily: 'JetBrainsMono-Bold',
   },
   namaaztext: {
     color: 'white',
     fontSize: 28,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   bottomtext: {
     color: 'white',
     fontSize: 28,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   layernineimg: {
@@ -349,6 +388,5 @@ const styles = StyleSheet.create({
     marginRight: '5%',
     color: 'white',
     fontSize: 23,
-    fontFamily: 'AbdoullahAshgar',
   },
 });

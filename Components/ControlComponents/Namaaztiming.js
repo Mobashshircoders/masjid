@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 //import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Fajrazaantime from '../Controls/Fajrazaantime';
@@ -23,33 +23,50 @@ import Shuruqtext from '../Controls/Shuruqtext';
 import Azaantext from '../Controls/Azaantext';
 import Salattext from '../Controls/Salattext';
 import Iqamatext from '../Controls/Iqamatext';
+import DefaultPreference from 'react-native-default-preference';
 
 const Namaaztiming = () => {
+  const [font, setFont] = useState('');
+
+  useEffect(() => {
+    getFont();
+  });
+
+  function getFont() {
+    try {
+      DefaultPreference.get('font').then(function (value) {
+        setFont(value);
+      });
+    } catch (e) {
+      // error reading value
+    }
+  }
+
   return (
     <View style={styles.mosquetimingwrapper}>
       <View style={styles.mosquetimings}>
-        <Azaantext style={styles.timingtext} />
-        <Fajrazaantime style={styles.timingtext1} />
-        <Dhuhrazaantime style={styles.timingtext1} />
-        <Asrazaantime style={styles.timingtext1} />
-        <Maghribazaantime style={styles.timingtext1} />
-        <Ishaazaantime style={styles.timingtext1} />
+        <Azaantext style={[styles.timingtext, {fontFamily: font}]} />
+        <Fajrazaantime style={[styles.timingtext1, {fontFamily: font}]} />
+        <Dhuhrazaantime style={[styles.timingtext1, {fontFamily: font}]} />
+        <Asrazaantime style={[styles.timingtext1, {fontFamily: font}]} />
+        <Maghribazaantime style={[styles.timingtext1, {fontFamily: font}]} />
+        <Ishaazaantime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
       <View style={styles.mosquetimings}>
-        <Salattext style={styles.timingtext} />
-        <Fajrtext style={styles.timingtext} />
-        <Dhuhrtext style={styles.timingtext} />
-        <Asrtext style={styles.timingtext} />
-        <Maghribtext style={styles.timingtext} />
-        <Ishatext style={styles.timingtext} />
+        <Salattext style={[styles.timingtext, {fontFamily: font}]} />
+        <Fajrtext style={[styles.timingtext, {fontFamily: font}]} />
+        <Dhuhrtext style={[styles.timingtext, {fontFamily: font}]} />
+        <Asrtext style={[styles.timingtext, {fontFamily: font}]} />
+        <Maghribtext style={[styles.timingtext, {fontFamily: font}]} />
+        <Ishatext style={[styles.timingtext, {fontFamily: font}]} />
       </View>
       <View style={styles.mosquetimings}>
-        <Iqamatext style={styles.timingtext} />
-        <Fajrtime style={styles.timingtext1} />
-        <Dhuhrtime style={styles.timingtext1} />
-        <Asrtime style={styles.timingtext1} />
-        <Maghribtime style={styles.timingtext1} />
-        <Ishatime style={styles.timingtext1} />
+        <Iqamatext style={[styles.timingtext, {fontFamily: font}]} />
+        <Fajrtime style={[styles.timingtext1, {fontFamily: font}]} />
+        <Dhuhrtime style={[styles.timingtext1, {fontFamily: font}]} />
+        <Asrtime style={[styles.timingtext1, {fontFamily: font}]} />
+        <Maghribtime style={[styles.timingtext1, {fontFamily: font}]} />
+        <Ishatime style={[styles.timingtext1, {fontFamily: font}]} />
       </View>
     </View>
   );
@@ -70,12 +87,10 @@ const styles = StyleSheet.create({
   timingtext: {
     fontSize: 29,
     color: 'white',
-    fontFamily: 'JetBrainsMono-Bold',
   },
   timingtext1: {
     fontSize: 27,
     color: 'orange',
-    fontFamily: 'JetBrainsMono-ExtraBold',
   },
 });
 

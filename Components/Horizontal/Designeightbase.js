@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -34,8 +34,24 @@ import Salattext from '../Controls/Salattext';
 import Iqamatext from '../Controls/Iqamatext';
 import Iqamatime from '../Iqamatime';
 import Imageslider from '../Imageslider';
+import DefaultPreference from 'react-native-default-preference';
 
 const Designeightbase = ({navigation}) => {
+  const [font, setFont] = useState('');
+
+  useEffect(() => {
+    getFont();
+  });
+
+  function getFont() {
+    try {
+      DefaultPreference.get('font').then(function (value) {
+        setFont(value);
+      });
+    } catch (e) {
+      // error reading value
+    }
+  }
   return (
     <View style={styles.maincontainer}>
       <View style={styles.containertop}></View>
@@ -47,9 +63,9 @@ const Designeightbase = ({navigation}) => {
               style={styles.layernineimg}
               source={require('../../assets/images/Horizontal/Designfour/horizontalbartop.png')}>
               <View style={styles.texthorizontal}>
-                <Azaantext style={styles.header} />
-                <Salattext style={styles.header} />
-                <Iqamatext style={styles.header} />
+                <Azaantext style={[styles.header, {fontFamily: font}]} />
+                <Salattext style={[styles.header, {fontFamily: font}]} />
+                <Iqamatext style={[styles.header, {fontFamily: font}]} />
               </View>
             </ImageBackground>
           </View>
@@ -59,31 +75,39 @@ const Designeightbase = ({navigation}) => {
                 style={styles.layernineimg}
                 source={require('../../assets/images/Horizontal/Designfour/verticalbar.png')}>
                 <View style={styles.textazanvertical}>
-                  <Fajrazaantime style={styles.azantime} />
-                  <Dhuhrazaantime style={styles.azantime} />
-                  <Asrazaantime style={styles.azantime} />
-                  <Maghribazaantime style={styles.azantime} />
-                  <Ishaazaantime style={styles.azantime} />
+                  <Fajrazaantime
+                    style={[styles.azantime, {fontFamily: font}]}
+                  />
+                  <Dhuhrazaantime
+                    style={[styles.azantime, {fontFamily: font}]}
+                  />
+                  <Asrazaantime style={[styles.azantime, {fontFamily: font}]} />
+                  <Maghribazaantime
+                    style={[styles.azantime, {fontFamily: font}]}
+                  />
+                  <Ishaazaantime
+                    style={[styles.azantime, {fontFamily: font}]}
+                  />
                 </View>
               </ImageBackground>
             </View>
             <View style={styles.in2}>
-              <Fajrtext style={styles.namaaztext} />
-              <Dhuhrtext style={styles.namaaztext} />
-              <Asrtext style={styles.namaaztext} />
-              <Maghribtext style={styles.namaaztext} />
-              <Ishatext style={styles.namaaztext} />
+              <Fajrtext style={[styles.namaaztext, {fontFamily: font}]} />
+              <Dhuhrtext style={[styles.namaaztext, {fontFamily: font}]} />
+              <Asrtext style={[styles.namaaztext, {fontFamily: font}]} />
+              <Maghribtext style={[styles.namaaztext, {fontFamily: font}]} />
+              <Ishatext style={[styles.namaaztext, {fontFamily: font}]} />
             </View>
             <View style={styles.in3}>
               <ImageBackground
                 style={styles.layernineimg}
                 source={require('../../assets/images/Horizontal/Designfour/verticalbar.png')}>
                 <View style={styles.textazanvertical}>
-                  <Fajrtime style={styles.azantime} />
-                  <Dhuhrtime style={styles.azantime} />
-                  <Asrtime style={styles.azantime} />
-                  <Maghribtime style={styles.azantime} />
-                  <Ishatime style={styles.azantime} />
+                  <Fajrtime style={[styles.azantime, {fontFamily: font}]} />
+                  <Dhuhrtime style={[styles.azantime, {fontFamily: font}]} />
+                  <Asrtime style={[styles.azantime, {fontFamily: font}]} />
+                  <Maghribtime style={[styles.azantime, {fontFamily: font}]} />
+                  <Ishatime style={[styles.azantime, {fontFamily: font}]} />
                 </View>
               </ImageBackground>
             </View>
@@ -94,8 +118,8 @@ const Designeightbase = ({navigation}) => {
                 style={styles.layernineimg}
                 source={require('../../assets/images/Horizontal/Designfour/rectangularbar.png')}>
                 <View style={styles.textazanrect}>
-                  <Jumuatext style={styles.bottomtext} />
-                  <Jumuatime style={styles.bottomtext} />
+                  <Jumuatext style={[styles.bottomtext, {fontFamily: font}]} />
+                  <Jumuatime style={[styles.bottomtext, {fontFamily: font}]} />
                 </View>
               </ImageBackground>
             </View>
@@ -105,8 +129,10 @@ const Designeightbase = ({navigation}) => {
                 style={styles.layernineimg}
                 source={require('../../assets/images/Horizontal/Designfour/rectangularbar.png')}>
                 <View style={styles.textazanrect}>
-                  <Shuruqtext style={styles.bottomtext} />
-                  <Shawwaltime style={styles.bottomtext} />
+                  <Shuruqtext style={[styles.bottomtext, {fontFamily: font}]} />
+                  <Shawwaltime
+                    style={[styles.bottomtext, {fontFamily: font}]}
+                  />
                 </View>
               </ImageBackground>
             </View>
@@ -197,13 +223,13 @@ const styles = StyleSheet.create({
   dayname: {
     color: 'black',
     fontSize: 24,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   arabicdate: {
     color: 'black',
     fontSize: 27,
-    fontFamily: 'JetBrainsMono-Bold',
+
     alignSelf: 'center',
   },
   horizontalline: {
@@ -244,23 +270,21 @@ const styles = StyleSheet.create({
   header: {
     color: 'black',
     fontSize: 25,
-    fontFamily: 'AbdoullahAshgar',
   },
   azantime: {
     color: '#f75a4f',
     fontSize: 28,
-    fontFamily: 'JetBrainsMono-Bold',
   },
   namaaztext: {
     color: 'black',
     fontSize: 28,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   bottomtext: {
     color: 'black',
     fontSize: 28,
-    fontFamily: 'AbdoullahAshgar',
+
     alignSelf: 'center',
   },
   layernineimg: {
@@ -274,6 +298,5 @@ const styles = StyleSheet.create({
     marginRight: '5%',
     color: 'black',
     fontSize: 23,
-    fontFamily: 'AbdoullahAshgar',
   },
 });
