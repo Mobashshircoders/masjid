@@ -39,7 +39,7 @@ import DefaultPreference from 'react-native-default-preference';
 import {Arabicyear} from '../Controls/Arabicdates';
 import Currentdayarabic from '../Controls/Currentdayarabic';
 
-const Designninebase = ({imgpath, navigation}) => {
+const Designsixbase = ({imgpath, navigation}) => {
   const [font, setFont] = useState('');
   const [language, setLanguage] = useState('');
   const [currmonthArabic, setCurrentmonthArabic] = useState('');
@@ -82,7 +82,7 @@ const Designninebase = ({imgpath, navigation}) => {
   return (
     <ImageBackground
       style={{flex: 1}}
-      source={require('../../assets/images/Horizontal/Designfive/bgnine.png')}>
+      source={require('../../assets/images/Horizontal/Designone/background1.png')}>
       <View style={styles.maincontainer}>
         <View style={styles.containertop}>
           <View style={styles.leftone}>
@@ -124,46 +124,10 @@ const Designninebase = ({imgpath, navigation}) => {
             <Nextazaan style={[styles.Nextazaantime, {fontFamily: font}]} />
           </View>
           <View style={styles.middletwo}>
-            {(() => {
-              if (imgpath == 'one') {
-                return (
-                  <Image
-                    style={styles.layernineimg}
-                    source={require('../../assets/images/Horizontal/Designfive/ctwo.png')}
-                  />
-                );
-              } else if (imgpath == 'two') {
-                return (
-                  <Image
-                    style={styles.layernineimg}
-                    source={require('../../assets/images/Horizontal/Designfive/cone.png')}
-                  />
-                );
-              } else if (imgpath == 'three') {
-                return (
-                  <Image
-                    style={styles.layernineimg}
-                    source={require('../../assets/images/Horizontal/Designfive/cfive.png')}
-                  />
-                );
-              } else if (imgpath == 'four') {
-                return (
-                  <Image
-                    style={styles.layernineimg}
-                    source={require('../../assets/images/Horizontal/Designfive/csix.png')}
-                  />
-                );
-              } else if (imgpath == 'five') {
-                return (
-                  <Image
-                    style={styles.layernineimg}
-                    source={require('../../assets/images/Horizontal/Designfive/cnine.png')}
-                  />
-                );
-              }
-
-              return null;
-            })()}
+            <Image
+              style={styles.layernineimg}
+              source={require('../../assets/images/Horizontal/Designfive/ctwo.png')}
+            />
           </View>
           <View style={styles.righttwo}>
             <Jumuatext style={[styles.Iqamatext, {fontFamily: font}]} />
@@ -210,7 +174,7 @@ const Designninebase = ({imgpath, navigation}) => {
     </ImageBackground>
   );
 };
-export default Designninebase;
+export default Designsixbase;
 const styles = StyleSheet.create({
   maincontainer: {
     flex: 1,

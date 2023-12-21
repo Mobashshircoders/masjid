@@ -29,9 +29,11 @@ import Iqamaaftertext from '../Controls/Iqamaaftertext';
 import Iqamatime from '../Iqamatime';
 import Imageslider from '../Imageslider';
 import DefaultPreference from 'react-native-default-preference';
+import Currentdayarabic from '../Controls/Currentdayarabic';
 
 const Designtenone = ({navigation}) => {
   const [font, setFont] = useState('');
+  const [language, setLanguage] = useState('');
 
   function getFont() {
     try {
@@ -44,6 +46,7 @@ const Designtenone = ({navigation}) => {
   }
   useEffect(() => {
     getFont();
+    getLanguage();
     setInterval(() => {
       var _data = new Iqamatime();
       //console.log('tempcheck');
@@ -58,6 +61,16 @@ const Designtenone = ({navigation}) => {
       //this.setState({Nextazaan: new Date().getHours()});
     }, 6000);
   });
+
+  function getLanguage() {
+    try {
+      DefaultPreference.get('language').then(function (value) {
+        setLanguage(value);
+      });
+    } catch (e) {
+      // error reading value
+    }
+  }
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
@@ -78,7 +91,13 @@ const Designtenone = ({navigation}) => {
           <View style={styles.containerright}>
             <View style={styles.cr1}></View>
             <View style={styles.cr2}>
-              <Currentdayeng style={[styles.dayname, {fontFamily: font}]} />
+              {language == 'Arabic' ? (
+                <Currentdayarabic
+                  style={[styles.dayname, {fontFamily: font}]}
+                />
+              ) : (
+                <Currentdayeng style={[styles.dayname, {fontFamily: font}]} />
+              )}
             </View>
             <View style={styles.cr3}>
               <Arabicclockdate

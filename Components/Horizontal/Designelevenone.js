@@ -49,7 +49,7 @@ import DefaultPreference from 'react-native-default-preference';
 import {Arabicyear} from '../Controls/Arabicdates';
 import Currentdayarabic from '../Controls/Currentdayarabic';
 
-const Designsevenone = ({navigation}) => {
+const Designelevenone = ({navigation}) => {
   const [font, setFont] = useState('');
   const [language, setLanguage] = useState('');
 
@@ -93,7 +93,7 @@ const Designsevenone = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <ImageBackground
         style={{flex: 1}}
-        source={require('../../assets/images/Horizontal/Designseven/bgsevenone.png')}>
+        source={require('../../assets/images/Horizontal/Designone/background1.png')}>
         <View style={styles.maincontainer}>
           <View style={styles.containertop}>
             <View style={styles.leftone}>
@@ -188,7 +188,7 @@ const Designsevenone = ({navigation}) => {
     </SafeAreaView>
   );
 };
-export default Designsevenone;
+export default Designelevenone;
 const styles = StyleSheet.create({
   maincontainer: {
     flex: 1,

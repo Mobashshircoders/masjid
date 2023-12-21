@@ -90,6 +90,8 @@ import GalleryVerticalTwo from './Components/Galleryverticaltwo';
 import GalleryVerticalThree from './Components/Galleryverticalthree';
 import GalleryVerticalFour from './Components/Galleryverticalfour';
 import GalleryFive from './Components/Galleryfive';
+import Designsixbase from './Components/Horizontal/Designsixbase';
+import Designelevenone from './Components/Horizontal/Designelevenone';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -163,10 +165,10 @@ const App = () => {
         <Stack.Screen name="HDesign10" component={Designninefour} />
         <Stack.Screen name="HDesign11" component={Designninefive} />
         <Stack.Screen name="HDesign12" component={Designnineone} />
-        <Stack.Screen name="HDesign13" component={Designonechoose} />
+        <Stack.Screen name="HDesign13" component={Designsixbase} />
         <Stack.Screen name="HDesign14" component={Designsevenone} />
         <Stack.Screen name="HDesign15" component={Designtenone} />
-        <Stack.Screen name="HDesign16" component={Designonechoose} />
+        <Stack.Screen name="HDesign16" component={Designelevenone} />
         <Stack.Screen name="HDesign17" component={Designtentwo} />
         <Stack.Screen name="HDesign18" component={Designtenthree} />
 
