@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 //import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Shawwaltime from '../Controls/Shawwaltime';
+import Shuruqtext from '../Controls/Shuruqtext';
 import DefaultPreference from 'react-native-default-preference';
 
 const Nextnamaaztime = () => {
@@ -22,7 +23,7 @@ const Nextnamaaztime = () => {
   }
   return (
     <View style={styles.nextnamaaztime}>
-      <Text style={[styles.nextnamaaznametxt, {fontFamily: font}]}>Shuruq</Text>
+      <Shuruqtext style={[styles.nextnamaaznametxt, {fontFamily: font}]} />
       <Shawwaltime style={[styles.nextnamaaztimetxt, {fontFamily: font}]} />
     </View>
   );

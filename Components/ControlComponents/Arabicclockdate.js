@@ -101,19 +101,20 @@ function writeIslamicDate(adjustment) {
     'Jumuah',
     'Sabt',
   );
+
   var iMonthNames = new Array(
-    'Muharram',
-    'Safar',
-    "Rabi'ul Awwal",
-    "Rabi'ul Akhir",
-    'Jumadal Ula',
-    'Jumadal Akhira',
-    'Rajab',
-    "Sha'ban",
-    'Ramadan',
-    'Shawwal',
-    "Dhul Qa'ada",
-    'Dhul Hijja',
+    'محرم',
+    'سفر',
+    'ربيع الأول',
+    'ربيع الآخر',
+    'جمادى العلا',
+    'جمادى الآخرة',
+    'رجب',
+    'شعبان',
+    'رمضان',
+    'شوال',
+    'ذو القعدة',
+    'ذو الحجة',
   );
   var iDate = kuwaiticalendar(adjustment);
   //   var outputIslamicDate =

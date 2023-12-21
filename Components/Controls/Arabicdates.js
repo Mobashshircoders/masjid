@@ -4,7 +4,7 @@ function gmod(n, m) {
   return ((n % m) + m) % m;
 }
 
-export function Arabicyear(adjust, choose) {
+export function Arabicyear(adjust, choose, isarabic = 0) {
   var today = new Date();
   if (adjust) {
     var adjustmili = 1000 * 60 * 60 * 24 * adjust;
@@ -100,11 +100,30 @@ export function Arabicyear(adjust, choose) {
     'Dhul Hijja',
   );
 
+  var iMonthNamesArabic = new Array(
+    'محرم',
+    'سفر',
+    'ربيع الأول',
+    'ربيع الآخر',
+    'جمادى العلا',
+    'جمادى الآخرة',
+    'رجب',
+    'شعبان',
+    'رمضان',
+    'شوال',
+    'ذو القعدة',
+    'ذو الحجة',
+  );
+
   if (choose == 'year') {
     return myRes[7];
   }
   if (choose == 'month') {
-    return iMonthNames[myRes[6]];
+    if (isarabic == 1) {
+      return iMonthNamesArabic[myRes[6]];
+    } else {
+      return iMonthNames[myRes[6]];
+    }
   }
   if (choose == 'date') {
     return myRes[5];

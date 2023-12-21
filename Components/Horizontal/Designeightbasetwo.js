@@ -29,9 +29,13 @@ import Iqamaaftertext from '../Controls/Iqamaaftertext';
 import Iqamatime from '../Iqamatime';
 import Imageslider from '../Imageslider';
 import DefaultPreference from 'react-native-default-preference';
+import Currentdayarabic from '../Controls/Currentdayarabic';
+import {Arabicyear} from '../Controls/Arabicdates';
 
 const Designeightbasetwo = ({navigation}) => {
   const [font, setFont] = useState('');
+  const [language, setLanguage] = useState('');
+  const [currmonthArabic, setCurrentmonthArabic] = useState('');
 
   function getFont() {
     try {
@@ -43,8 +47,20 @@ const Designeightbasetwo = ({navigation}) => {
     }
   }
 
+  function getLanguage() {
+    try {
+      DefaultPreference.get('language').then(function (value) {
+        setLanguage(value);
+      });
+    } catch (e) {
+      // error reading value
+    }
+  }
+
   useEffect(() => {
+    setCurrentmonthArabic(Arabicyear(1, 'month', 1));
     getFont();
+    getLanguage();
     setInterval(() => {
       var _data = new Iqamatime();
       //console.log('tempcheck');
@@ -67,7 +83,11 @@ const Designeightbasetwo = ({navigation}) => {
         <View style={styles.maincontainer}>
           <View style={styles.cr1}></View>
           <View style={styles.cr2}>
-            <Currentdayeng style={[styles.dayname, {fontFamily: font}]} />
+            {language == 'Arabic' ? (
+              <Currentdayarabic style={[styles.dayname, {fontFamily: font}]} />
+            ) : (
+              <Currentdayeng style={[styles.dayname, {fontFamily: font}]} />
+            )}
           </View>
           <View style={styles.cr3}>
             <Arabicclockdate style={[styles.arabicdate, {fontFamily: font}]} />

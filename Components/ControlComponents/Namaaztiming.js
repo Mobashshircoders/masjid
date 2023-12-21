@@ -87,10 +87,12 @@ const styles = StyleSheet.create({
   timingtext: {
     fontSize: 29,
     color: 'white',
+    alignSelf: 'center',
   },
   timingtext1: {
     fontSize: 27,
     color: 'orange',
+    alignSelf: 'center',
   },
 });
 

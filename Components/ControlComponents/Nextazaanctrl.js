@@ -2,7 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 //import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Nextazaan from '../Controls/Nextazaan';
+import Nextazaantext from '../Controls/Nextazaantext';
+
 import Iqamaafter from '../Controls/Iqamaafter';
+import Iqamaaftertext from '../Controls/Iqamaaftertext';
 import DefaultPreference from 'react-native-default-preference';
 
 const Nextazaanctrl = () => {
@@ -65,16 +68,12 @@ const Nextazaanctrl = () => {
   return (
     <View style={styles.container1}>
       <View style={styles.nextazaanview}>
-        <Text style={[styles.nextazaantext, {fontFamily: font}]}>
-          Next Azaan
-        </Text>
+        <Nextazaantext style={[styles.nextazaantext, {fontFamily: font}]} />
         <Nextazaan style={[styles.nextazaantime, {fontFamily: font}]} />
       </View>
 
       <View style={styles.iqamaafterview}>
-        <Text style={[styles.iqamaaftertext, {fontFamily: font}]}>
-          Iqama After
-        </Text>
+        <Iqamaaftertext style={[styles.iqamaaftertext, {fontFamily: font}]} />
         <Iqamaafter style={[styles.iqamaaftertime, {fontFamily: font}]} />
       </View>
     </View>
